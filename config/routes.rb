@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :menus do
+    resources :meals, only: :create
+    resources :orders, only: :create
+  end
+
+  root to: 'menus#index'
 end
