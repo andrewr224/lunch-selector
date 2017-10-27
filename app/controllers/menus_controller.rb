@@ -6,6 +6,9 @@ class MenusController < ApplicationController
   def show
     @menu = Menu.find(params[:id])
 
+    @order = Order.new
+    @order.menu_id = @menu.id
+
     @meal = Meal.new
     @meal.menu_id = @menu.id
   end

@@ -1,5 +1,11 @@
 <h1>Menu for <%= @menu.created_at.strftime('%A') %>, <%= @menu.created_at.day %>th of <%= @menu.created_at.strftime('%B') %></h1>
 
+<h2>Orders:</h2>
+<ul>
+  <%= render partial: 'menus/order', collection: @menu.orders %>
+</ul>
+<%= render partial: 'orders/form' %>
+
 <h2>Meals:</h2>
 <%= render partial: 'menus/meal', collection: @menu.meals %>
 <%= render partial: 'meals/form' %>
