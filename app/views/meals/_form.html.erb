@@ -1,18 +1,18 @@
 <h3>Add a meal to the menu</h3>
-<%=form_for [ @menu, @meal ] do |f|%>
+<%= form_for [ @menu.menu, @menu.new_meal ] do |f| %>
   <p>
-    <%=f.label :name%><br/>
-    <%=f.text_field :name%>
+    <%= f.label :name %><br/>
+    <%= f.text_field :name %>
   </p>
   <p>
-    <%=f.label :course%><br/>
-    <%=f.text_field :course%>
+    <%= f.label :course %><br/>
+    <%= f.text_field :course %>
   </p>
   <p>
-    <%=f.label :price%><br/>
-    <%=f.number_field :price%>
+    <%= f.label :price %><br/>
+    <%= f.number_field :price %>
   </p>
   <p>
-    <%=f.submit 'Submit'%>
+    <%= f.submit 'Submit' %>
   </p>
-<%end%>
+<% end %>

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Meal do
   let(:params) do
-    { menu: Menu.create(id: 1) }
+    { menu: Menu.create }
   end
 
   describe 'Creator' do

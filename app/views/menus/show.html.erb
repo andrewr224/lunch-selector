@@ -1,11 +1,11 @@
-<h1>Menu for <%=@menu.day_stamp%></h1>
+<h1>Menu for <%= @menu.menu.day_stamp %></h1>
 <h2>Orders:</h2>
 <ul>
-  <%=render partial: 'menus/order', collection: @menu.orders.decorate%>
+  <%= render partial: 'menus/order', collection: @menu.orders %>
 </ul>
-<%=render partial: 'orders/form'%>
+<%= render partial: 'orders/form'%>
 <h2>Meals:</h2>
-<%=render partial: 'menus/meal', collection: @menu.meals%>
-<%=render partial: 'meals/form'%>
-<%=link_to 'Edit', edit_menu_path(@menu)%> | <%=link_to 'Delete', menu_path(@menu), method: :delete%><br>
-<%=link_to 'Dashboard', menus_path%>
+<%= render partial: 'menus/meal', collection: @menu.meals %>
+<%= render partial: 'meals/form'%>
+<%= link_to 'Edit', edit_menu_path(@menu.menu) %> | <%= link_to 'Delete', menu_path(@menu.menu), method: :delete %><br>
+<%= link_to 'Dashboard', menus_path %>

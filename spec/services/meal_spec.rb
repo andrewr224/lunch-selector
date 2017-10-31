@@ -4,9 +4,8 @@ RSpec.describe Meal do
   let(:params) do
     { params: { name: 'pizza',
                 course: 'main course',
-                price: 42,
-                id: 1 },
-      menu: Menu.create(id: 1) }
+                price: 42 },
+      menu: Menu.create }
   end
 
   describe 'Creator' do

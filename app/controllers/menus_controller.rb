@@ -1,16 +1,13 @@
 class MenusController < ApplicationController
   before_action :build_menu!, only: %i[new create]
-  before_action :find_menu!, only: %i[edit update destroy]
+  before_action :find_menu!, only: %i[show edit update destroy]
 
   def index
     @menus = Menu.all
   end
 
   def show
-    menu   = Menu::Show.call(params)
-    @menu  = menu[:menu].decorate
-    @order = menu[:order]
-    @meal  = menu[:meal]
+    @menu = MenuFacade.new(@menu)
   end
 
   def create
@@ -24,7 +21,7 @@ class MenusController < ApplicationController
 
   def destroy
     @menu.destroy
-    redirect_to menus_path, notice: 'Menu destroyed!'
+    redirect_to menus_path, alert: 'Menu destroyed!'
   end
 
   private

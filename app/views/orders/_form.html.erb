@@ -1,7 +1,7 @@
 <h1>Select your meals for today</h1>
 <p><small>First neeed to implement a connection between Order and Meal</small></p>
-<%=form_for [ @menu, @order ] do |f|%>
+<%= form_for [ @menu.menu, @menu.new_order ] do |f| %>
   <p>
-    <%=f.submit 'Submit'%>
+    <%= f.submit 'Submit' %>
   </p>
-<%end%>
+<% end %>
