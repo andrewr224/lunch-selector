@@ -1,5 +1,5 @@
 <h3>Add a meal to the menu</h3>
-<%= form_for [ @menu.menu, @menu.new_meal ] do |f| %>
+<%= form_for [ @menu.menu, @menu.new_meal ], class: 'new-meal' do |f| %>
   <p>
     <%= f.label :name %><br/>
     <%= f.text_field :name %>

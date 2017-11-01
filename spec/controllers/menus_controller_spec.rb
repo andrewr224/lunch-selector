@@ -1,29 +1,49 @@
 require 'rails_helper'
 
 RSpec.describe MenusController, type: :controller do
-  let(:menu) do
-    Menu.new(id: 1, created_at: Time.now)
+  context 'GET #index' do
+    it 'returns success response' do
+      get :index
+      expect(response).to be_success
+    end
   end
 
-  describe 'MenuFacade' do
-    subject(:menu_facade) { MenuFacade.new(menu) }
-
-    describe 'menu' do
-      it 'still has a menu object' do
-        expect(menu_facade.menu).to be_a Menu
-      end
-
-      it 'can access methods from decorators' do
-        expect(menu_facade.menu.day_stamp).to include(Time.now.strftime('%B'))
-      end
+  context 'GET #show' do
+    it 'returns success response' do
+      menu = Menu.create!
+      get :show, params: { id: menu.to_param }
+      expect(response).to be_success
     end
+  end
 
-    describe '#new_order' do
-      it { expect(menu_facade.new_order).to be_an Order }
+  context 'POST #create' do
+    it 'responds to html' do
+      post :create
+      expect(response.content_type).to eq 'text/html'
     end
+  end
 
-    describe '#new_meal' do
-      it { expect(menu_facade.new_meal).to be_a Meal }
+  context 'GET #edit' do
+    it 'returns success response' do
+      menu = Menu.create!
+      get :edit, params: { id: menu.to_param }
+      expect(response).to be_success
+    end
+  end
+
+  context 'PUT #update' do
+    it 'responds to html' do
+      menu = Menu.create!
+      put :update, params: { id: menu.to_param }
+      expect(response.content_type).to eq 'text/html'
+    end
+  end
+
+  context 'DELETE #destroy' do
+    it 'responds to html' do
+      menu = Menu.create!
+      delete :destroy, params: { id: menu.to_param }
+      expect(response.content_type).to eq 'text/html'
     end
   end
 end

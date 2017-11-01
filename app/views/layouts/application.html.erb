@@ -9,7 +9,9 @@
   </head>
 
   <body>
-    <h4><%= flash.notice %></h4>
+    <% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, class: name %>
+    <% end -%>
     <h4><%= flash.alert %></h4>
     <%= yield %>
   </body>

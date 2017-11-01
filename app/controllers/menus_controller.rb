@@ -21,7 +21,7 @@ class MenusController < ApplicationController
 
   def destroy
     @menu.destroy
-    redirect_to menus_path, alert: 'Menu destroyed!'
+    redirect_to menus_path, notice: 'Menu destroyed!'
   end
 
   private
