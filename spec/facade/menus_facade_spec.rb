@@ -1,19 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe 'ShowFacade' do
-  let(:menu) do
-    Menu.create
-  end
+  let(:menu) { Menu.create }
   subject(:menu_facade) { Menu::ShowFacade.new(menu) }
 
-  describe 'menu' do
-    it 'still has a menu object' do
-      expect(menu_facade.menu).to be_a Menu
-    end
+  it 'still has a menu object' do
+    expect(menu_facade.menu).to be_a Menu
+  end
 
-    it 'can access methods from decorators' do
-      expect(menu_facade.menu.day_stamp).to include(Time.now.strftime('%B'))
-    end
+  it 'can access methods from decorators' do
+    expect(menu_facade.menu.day_stamp).to be_a String
   end
 
   describe '#new_order' do

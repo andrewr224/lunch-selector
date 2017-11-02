@@ -1,0 +1,5 @@
+%h1 Select your meals for today
+%p
+  %small First neeed to implement a connection between Order and Meal
+= form_for [ @facade.menu, @facade.new_order ] do |f|
+  %p= f.submit 'Submit'

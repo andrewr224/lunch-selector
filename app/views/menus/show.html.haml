@@ -1,0 +1,13 @@
+%h1= "Menu for #{@facade.menu.day_stamp}"
+%h2 Orders:
+%ul
+  = render partial: 'orders/order', collection: @facade.orders
+
+= render partial: 'orders/form'
+%h2 Meals:
+= render partial: 'meals/meal', collection: @facade.meals
+= render partial: 'meals/form'
+= link_to 'Edit', edit_menu_path(@facade.menu)
+= link_to 'Delete', menu_path(@facade.menu), method: :delete
+%br
+= link_to 'Dashboard', menus_path

@@ -1,6 +1,6 @@
 class MenusController < ApplicationController
   def index
-    @menus = Menu.all
+    @menus = Menu.all.decorate
   end
 
   def show
