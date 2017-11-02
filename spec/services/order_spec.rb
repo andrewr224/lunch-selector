@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-RSpec.describe Meal do
+RSpec.describe Order do
   let(:params) do
     { menu: Menu.create }
   end
 
-  describe 'Creator' do
-    subject(:order) { Order::Creator.call(params) }
+  describe 'Create' do
+    subject(:order) { Order::Create.call(params) }
     it 'creates an order' do
       is_expected.to be_an Order
     end

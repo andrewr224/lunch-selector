@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe 'MenuFacade' do
+RSpec.describe 'ShowFacade' do
   let(:menu) do
     Menu.create
   end
-  subject(:menu_facade) { MenuFacade.new(menu) }
+  subject(:menu_facade) { Menu::ShowFacade.new(menu) }
 
   describe 'menu' do
     it 'still has a menu object' do
@@ -21,6 +21,6 @@ RSpec.describe 'MenuFacade' do
   end
 
   describe '#new_meal' do
-    it { expect(menu_facade.new_meal).to be_a Meal }
+    it { expect(menu_facade.new_meal).to be_a MealForm }
   end
 end

@@ -1,11 +1,16 @@
 class OrdersController < ApplicationController
   def create
-    Order::Creator.call(
+    order = Order::Create.call(
       params: params,
       menu:   menu
     )
 
-    redirect_back fallback_location: root_path
+    if order
+      flash[:notice] = 'Order Placed!'
+    else
+      flash[:error] = 'Order Failed!'
+    end
+    redirect_to menu
   end
 
   private

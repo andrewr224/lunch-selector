@@ -1,12 +1,11 @@
 class Order
-  class Creator < ApplicationService
+  class Create < ApplicationService
     def initialize(params = {})
       @menu = params[:menu]
     end
 
     def call
-      order.save
-      order
+      order if order.save
     end
 
     private

@@ -1,36 +1,42 @@
 class MenusController < ApplicationController
-  before_action :build_menu!, only: %i[new create]
-  before_action :find_menu!, only: %i[show edit update destroy]
-
   def index
     @menus = Menu.all
   end
 
   def show
-    @menu = MenuFacade.new(@menu)
+    @facade = Menu::ShowFacade.new(params)
   end
 
-  def create
-    @menu.save
-    redirect_to menu_path(@menu), notice: 'Menu created!'
-  end
-
-  def update
-    redirect_to menu_path(@menu), notice: 'Menu updated!'
-  end
-
-  def destroy
-    @menu.destroy
-    redirect_to menus_path, notice: 'Menu destroyed!'
-  end
-
-  private
-
-  def build_menu!
+  def new
     @menu = Menu.new
   end
 
-  def find_menu!
-    @menu = Menu.find(params[:id])
+  def create
+    menu = Menu::Create.call(params)
+    if menu
+      redirect_to menu, notice: 'Menu created!'
+    else
+      flash.now[:error] = 'Something went wrong :('
+      render :new
+    end
+  end
+
+  def edit
+    @menu = Menu::Edit.call(params)
+  end
+
+  def update
+    menu = Menu::Update.call(params)
+    if menu
+      redirect_to menu, notice: 'Menu updated!'
+    else
+      flash.now[:error] = 'Something went wrong :('
+      render :edit
+    end
+  end
+
+  def destroy
+    Menu::Destroy.call(params)
+    redirect_to menus_path, notice: 'Menu destroyed!'
   end
 end

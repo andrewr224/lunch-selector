@@ -1,11 +1,14 @@
 class MealsController < ApplicationController
   def create
-    Meal::Creator.call(
-      params: meal_params,
-      menu:   menu
-    )
+    form = MealForm.new(menu.meals.new)
 
-    redirect_back fallback_location: root_path
+    if form.validate(meal_params)
+      form.save
+      flash[:notice] = 'Meal Added!'
+    else
+      flash[:error] = 'Something went wrong :('
+    end
+    redirect_to menu
   end
 
   private
@@ -15,6 +18,6 @@ class MealsController < ApplicationController
   end
 
   def meal_params
-    params.require(:meal).permit(:name, :course, :price)
+    params.require(:meal).permit(:name, :course, :price, :meal_id)
   end
 end
