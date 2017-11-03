@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171027125657) do
+ActiveRecord::Schema.define(version: 20171103104530) do
 
   create_table "choices", force: :cascade do |t|
     t.integer "order_id"
@@ -24,16 +24,32 @@ ActiveRecord::Schema.define(version: 20171027125657) do
   create_table "meals", force: :cascade do |t|
     t.string "name"
     t.string "course"
-    t.integer "price"
-    t.integer "menu_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["menu_id"], name: "index_meals_on_menu_id"
+  end
+
+  create_table "menu_items", force: :cascade do |t|
+    t.integer "menu_id"
+    t.integer "meal_id"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meal_id"], name: "index_menu_items_on_meal_id"
+    t.index ["menu_id"], name: "index_menu_items_on_menu_id"
   end
 
   create_table "menus", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer "order_id"
+    t.integer "meal_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meal_id"], name: "index_order_items_on_meal_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
   end
 
   create_table "orders", force: :cascade do |t|

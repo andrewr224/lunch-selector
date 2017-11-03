@@ -13,26 +13,11 @@ class MenusController < ApplicationController
 
   def create
     menu = Menu::Create.call(params)
-    if menu
-      redirect_to menu, notice: 'Menu created!'
-    else
-      flash.now[:error] = 'Something went wrong :('
-      render :new
-    end
+    redirect_to menu, notice: 'Menu created!'
   end
 
   def edit
-    @menu = Menu::Edit.call(params)
-  end
-
-  def update
-    menu = Menu::Update.call(params)
-    if menu
-      redirect_to menu, notice: 'Menu updated!'
-    else
-      flash.now[:error] = 'Something went wrong :('
-      render :edit
-    end
+    @facade = Menu::EditFacade.new(params)
   end
 
   def destroy

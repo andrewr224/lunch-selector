@@ -31,14 +31,6 @@ RSpec.describe MenusController, type: :controller do
     end
   end
 
-  describe 'PUT #update' do
-    it 'updates the menu' do
-      menu = Menu.create!
-      put :update, params: { id: menu.to_param }
-      expect(flash[:notice]).to eq('Menu updated!')
-    end
-  end
-
   describe 'DELETE #destroy' do
     it 'deletes the menu' do
       menu = Menu.create!

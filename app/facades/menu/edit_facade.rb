@@ -1,17 +1,13 @@
 class Menu
-  class ShowFacade
+  class EditFacade
     delegate :meals, to: :menu
 
     def initialize(params)
       @id = params[:id]
     end
 
-    def new_order
-      @order ||= menu.orders.new
-    end
-
-    def orders
-      @orders ||= menu.orders.decorate
+    def new_meal
+      @meal ||= MealForm.new(Meal.new)
     end
 
     def menu

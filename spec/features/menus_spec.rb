@@ -26,15 +26,6 @@ RSpec.feature 'Menus', type: :feature do
     end
   end
 
-  describe 'edit menu' do
-    scenario 'edits menu' do
-      visit menu_path menu
-      click_on 'Edit'
-      click_button 'Update Menu'
-      expect(page).to have_content 'Menu updated!'
-    end
-  end
-
   describe 'delete menu' do
     scenario 'delets menu' do
       visit menu_path menu

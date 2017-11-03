@@ -1,6 +1,6 @@
 %h1 Exceedingly gorgeous Lunch Selector
 %h1 All menus:
 %ul
-  = render partial: 'menu', collection: @menus
+  = render @menus
 
 = link_to "Create today's menu", new_menu_path

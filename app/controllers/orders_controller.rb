@@ -5,11 +5,8 @@ class OrdersController < ApplicationController
       menu:   menu
     )
 
-    if order
-      flash[:notice] = 'Order Placed!'
-    else
-      flash[:error] = 'Order Failed!'
-    end
+    flash.notice = order ? 'Order Placed!' : 'Order Failed!'
+
     redirect_to menu
   end
 

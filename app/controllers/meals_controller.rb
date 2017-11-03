@@ -1,14 +1,14 @@
 class MealsController < ApplicationController
   def create
-    form = MealForm.new(menu.meals.new)
+    @form = MealForm.new(Meal.new)
 
-    if form.validate(meal_params)
-      form.save
-      flash[:notice] = 'Meal Added!'
-    else
-      flash[:error] = 'Something went wrong :('
+    if @form.validate(params[:meal])
+      @form.save do |meal_parmas|
+        add_to_menu(meal_parmas)
+      end
     end
-    redirect_to menu
+
+    redirect_back(fallback_location: root_path)
   end
 
   private
@@ -17,7 +17,9 @@ class MealsController < ApplicationController
     @menu ||= Menu.find_by(id: params[:menu_id])
   end
 
-  def meal_params
-    params.require(:meal).permit(:name, :course, :price, :meal_id)
+  def add_to_menu(meal_parmas)
+    meal = Meal.find_by(name: meal_parmas[:name]) || Meal.create(meal_parmas)
+
+    menu.meals << meal unless menu.meals.include? meal
   end
 end

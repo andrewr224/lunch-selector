@@ -30,7 +30,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'pry'
   gem 'capybara', '~> 2.13'
   gem 'factory_bot_rails', '~> 4.0'
   gem 'rspec-rails', '~> 3.6'
@@ -42,6 +42,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
+  gem 'awesome_print'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
