@@ -1,6 +1,6 @@
 class Menu
   class Create < ApplicationService
-    def initialize(params = {}) end
+    def initialize(params = {}); end
 
     def call
       menu if menu.save
