@@ -1,5 +1,5 @@
 %h1 Select your meals for today
-= form_for [ @facade.menu, @facade.new_order ] do |f|
+= form_for [@facade.menu, @facade.new_order] do |f|
   = render @facade.meals.select{ |m| m.course == "First Course"}
   = render @facade.meals.select{ |m| m.course == "Main Course"}
   = render @facade.meals.select{ |m| m.course == "Beverage"}

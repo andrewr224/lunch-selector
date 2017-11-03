@@ -1,5 +1,5 @@
 %h3 Add a meal to the menu
-= form_for [ @facade.menu, @facade.new_meal ] do |f|
+= form_for [@facade.menu, @facade.new_meal] do |f|
   %p
     = f.label :name
     %br

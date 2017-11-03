@@ -1,7 +1,7 @@
 class Menu
   class Destroy < ApplicationService
-    def initialize(params = {})
-      @id = params[:id]
+    def initialize(id)
+      @id = id
     end
 
     def call

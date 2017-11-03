@@ -12,7 +12,8 @@ class MenusController < ApplicationController
   end
 
   def create
-    menu = Menu::Create.call(params)
+    menu = Menu.create
+
     redirect_to menu, notice: 'Menu created!'
   end
 
@@ -21,7 +22,8 @@ class MenusController < ApplicationController
   end
 
   def destroy
-    Menu::Destroy.call(params)
+    Menu::Destroy.call(params[:id])
+
     redirect_to menus_path, notice: 'Menu destroyed!'
   end
 end

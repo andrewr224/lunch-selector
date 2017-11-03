@@ -15,10 +15,9 @@ class Meal
     attr_reader :form, :meal_parmas, :menu
 
     def save_meal
-      if @form.validate(meal_parmas)
-        @form.save do |meal_parmas|
-          add_to_menu(meal_parmas)
-        end
+      return unless @form.validate(meal_parmas)
+      @form.save do |meal_parmas|
+        add_to_menu(meal_parmas)
       end
     end
 
