@@ -14,8 +14,7 @@ RSpec.feature 'Menus', type: :feature do
   describe 'create menu' do
     scenario 'creates a menu' do
       visit new_menu_path
-      click_button 'Create Menu'
-      expect(page).to have_content 'Menu created!'
+      expect { click_on 'Create Menu' }.to change(Menu, :count).by(1)
     end
   end
 
@@ -29,8 +28,7 @@ RSpec.feature 'Menus', type: :feature do
   describe 'delete menu' do
     scenario 'delets menu' do
       visit menu_path menu
-      click_on 'Delete'
-      expect(page).to have_content 'Menu destroyed!'
+      expect { click_on 'Delete' }.to change(Menu, :count).by(-1)
     end
   end
 end

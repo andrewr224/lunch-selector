@@ -1,13 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe Order do
-  let(:params) { { menu: Menu.create } }
+RSpec.describe Order::Create do
+  let(:menu) { create(:menu) }
+  subject { described_class.call(menu: menu) }
 
-  describe 'Create' do
-    subject(:order) { Order::Create.call(params) }
-
-    it 'creates an order' do
-      is_expected.to be_an Order
-    end
+  it 'creates an order' do
+    is_expected.to be_an Order
   end
 end
