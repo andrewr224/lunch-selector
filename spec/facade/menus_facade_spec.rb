@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'ShowFacade' do
-  subject(:menu_facade) { Menu::ShowFacade.new(Menu.create) }
+  subject(:menu_facade) { Menu::ShowFacade.new(create(:menu)) }
 
   it 'still has a menu object' do
     expect(menu_facade.menu).to be_a Menu
@@ -17,7 +17,7 @@ RSpec.describe 'ShowFacade' do
 end
 
 RSpec.describe 'EditFacade' do
-  subject(:menu_facade) { Menu::EditFacade.new(Menu.create) }
+  subject(:menu_facade) { Menu::EditFacade.new(create(:menu)) }
 
   describe '#new_meal' do
     it { expect(menu_facade.new_meal).to be_a MealForm }

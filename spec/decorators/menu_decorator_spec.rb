@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe MenuDecorator do
-  subject(:menu) { Menu.create.decorate }
+  subject(:menu) { create(:menu).decorate }
 
   describe '#day_stamp' do
     it 'returns a string' do

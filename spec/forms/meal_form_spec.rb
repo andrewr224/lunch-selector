@@ -1,8 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe 'MealForm' do
-  let(:params) { { name: 'pizza', course: 'main course' } }
-  subject(:form) { MealForm.new(Meal.new) }
+  let(:params) do
+    { meal:      { name: 'pizza', course: 'main course' },
+      menu_item: { price: 15 } }
+  end
+  subject(:form) do
+    MealForm.new(meal: build(:meal), menu_item: build(:menu_item))
+  end
 
   it 'validats properly filled params' do
     form.validate(params)
@@ -30,6 +35,18 @@ RSpec.describe 'MealForm' do
     it 'is not valid' do
       form.validate(params.merge(name: 'very long and cumbersome name'))
       expect(form.errors[:name].first).to include('too long')
+    end
+  end
+
+  it 'requires price' do
+    form.validate(params.merge(price: nil))
+    expect(form.errors[:price]).not_to be_empty
+  end
+
+  context 'when price is 0' do
+    it 'is not valid' do
+      form.validate(params.merge(price: 0))
+      expect(form.errors[:price]).not_to be_empty
     end
   end
 end

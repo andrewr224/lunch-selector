@@ -1,9 +1,9 @@
 class MealsController < ApplicationController
   def create
     meal = Meal::Create.call(
-      params: params,
-      form:   MealForm.new(Meal.new),
-      menu:   menu
+      meal_params: params[:meal],
+      form:        MealForm.new(meal: Meal.new, menu_item: MenuItem.new),
+      menu:        menu
     )
 
     meal ? notify_success : notify_failure

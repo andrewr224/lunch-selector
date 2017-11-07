@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe OrderDecorator do
-  subject(:order) { Order.create(menu: Menu.new).decorate }
+  subject(:order) { Order.create(menu: create(:menu)).decorate }
 
   describe '#stamp' do
     it 'returns a string' do

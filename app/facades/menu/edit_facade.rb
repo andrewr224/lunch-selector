@@ -7,7 +7,7 @@ class Menu
     end
 
     def new_meal
-      @meal ||= MealForm.new(Meal.new)
+      @meal ||= MealForm.new(meal: Meal.new, menu_item: MenuItem.new)
     end
 
     def menu
