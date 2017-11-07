@@ -1,34 +1,41 @@
 class Meal
   class Create < ApplicationService
     def initialize(params = {})
-      @meal_parmas = params[:params][:meal]
+      @meal_params = params[:meal_params]
       @form =        params[:form]
       @menu =        params[:menu]
     end
 
     def call
-      save_meal
+      ActiveRecord::Base.transaction do
+        return unless form.validate(meal_params)
+
+        form.save do |params|
+          add_to_menu(params)
+        end
+      end
     end
 
     private
 
-    attr_reader :form, :meal_parmas, :menu
+    attr_reader :form, :meal_params, :menu
 
-    def save_meal
-      return unless form.validate(meal_parmas)
-      form.save do |valid_params|
-        add_to_menu(valid_params)
-      end
+    def add_to_menu(params)
+      meal = new_or_existing_meal(params)
+
+      return if menu.meals.include?(meal)
+
+      MenuItem.create(
+        price: params[:menu_item]['price'],
+        menu:  menu,
+        meal:  meal
+      )
     end
 
-    def add_to_menu(valid_params)
-      meal = meal(valid_params)
+    def new_or_existing_meal(params)
+      params = params[:meal].symbolize_keys
 
-      menu.meals << meal unless menu.meals.include? meal
-    end
-
-    def meal(valid_params)
-      Meal.find_or_create_by(name: valid_params[:name].capitalize)
+      Meal.find_or_create_by(name: params[:name].capitalize)
     end
   end
 end
