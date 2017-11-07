@@ -1,5 +1,5 @@
 %h1 Edit today's menu
 = render @facade.meals
-= render partial: 'meals/form'
+= render partial: 'meals/form', locals: { menu: @facade.menu, meal: @facade.new_meal }
 
 = link_to "Done!", menu_path(@facade.menu)

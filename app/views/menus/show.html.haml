@@ -3,7 +3,7 @@
 %ul
   = render @facade.orders
 
-= render 'orders/form'
+= render partial: 'orders/form', locals: { menu: @facade.menu, order: @facade.new_order, first_course: @facade.first_course, main_course: @facade.main_course, beverage: @facade.beverage }
 
 = render @facade.meals
 
