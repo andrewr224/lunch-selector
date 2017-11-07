@@ -17,7 +17,7 @@ RSpec.feature 'Meals', type: :feature do
   describe 'adding meals' do
     context 'when the form is filled properly' do
       scenario 'creates a new meal' do
-        visit edit_menu_path menu
+        visit edit_menu_path(menu)
         submit_the_form
         expect(page).to have_content(name, count: 1)
       end

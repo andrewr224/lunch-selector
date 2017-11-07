@@ -14,7 +14,8 @@ class MenusController < ApplicationController
   def create
     menu = Menu.create
 
-    redirect_to menu, notice: 'Menu created!'
+    notify(:notice, "#{t(:menu_created)}!")
+    redirect_to menu
   end
 
   def edit
@@ -24,6 +25,7 @@ class MenusController < ApplicationController
   def destroy
     Menu::Destroy.call(params[:id])
 
-    redirect_to menus_path, notice: 'Menu destroyed!'
+    notify(:notice, "#{t(:menu_destroyed)}!")
+    redirect_to menus_path
   end
 end

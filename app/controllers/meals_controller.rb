@@ -6,7 +6,8 @@ class MealsController < ApplicationController
       menu:        menu
     )
 
-    meal ? notify_success : notify_failure
+    notify(:notice, "#{t(:meal_added)}!") if meal
+    notify(:notice, "#{t(:meal_error)}!") unless meal
 
     redirect_back(fallback_location: root_path)
   end
@@ -15,13 +16,5 @@ class MealsController < ApplicationController
 
   def menu
     @menu ||= Menu.find_by(id: params[:menu_id])
-  end
-
-  def notify_success
-    flash[:notice] = 'Meal Added!'
-  end
-
-  def notify_failure
-    flash[:error] = "Achtung! Something's wrong!"
   end
 end

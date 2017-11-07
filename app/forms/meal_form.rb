@@ -1,7 +1,7 @@
 class MealForm < Reform::Form
   include Composition
 
-  model :meal,      on: :meal
+  model    :meal,   on: :meal
   property :name,   on: :meal
   property :course, on: :meal
   property :price,  on: :menu_item

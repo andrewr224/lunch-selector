@@ -2,8 +2,8 @@ class Meal
   class Create < ApplicationService
     def initialize(params = {})
       @meal_params = params[:meal_params]
-      @form =        params[:form]
-      @menu =        params[:menu]
+      @form        = params[:form]
+      @menu        = params[:menu]
     end
 
     def call
@@ -35,7 +35,12 @@ class Meal
     def new_or_existing_meal(params)
       params = params[:meal].symbolize_keys
 
-      Meal.find_or_create_by(name: params[:name].capitalize)
+      Meal.find_or_initialize_by(name: params[:name].capitalize) do |meal|
+        meal.name   = params[:name].capitalize
+        meal.course = params[:course]
+      end
     end
   end
 end
+
+#notify(:notice, meal ? "#{t(:meal_added)}!" : "#{t(:meal_error)}!")

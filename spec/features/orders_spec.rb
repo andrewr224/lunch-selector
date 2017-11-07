@@ -9,7 +9,7 @@ RSpec.feature 'Orders', type: :feature do
       within('.new_order') do
         click_button 'Submit'
       end
-      expect(page).to have_content 'Order Placed!'
+      expect(page).to have_content 'Order placed!'
     end
   end
 end

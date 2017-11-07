@@ -62,5 +62,9 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
+  config.before(:each, type: :feature) do
+    default_url_options[:locale] = I18n.default_locale
+  end
+
   config.include FactoryBot::Syntax::Methods
 end

@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
       menu:   menu
     )
 
-    flash.notice = order ? 'Order Placed!' : 'Order Failed!'
+    notify(:notice, "#{t(:order_created)}!") if order
 
     redirect_to menu
   end

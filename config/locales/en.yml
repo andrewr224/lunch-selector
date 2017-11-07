@@ -30,4 +30,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  website_title: 'Exceedingly gorgeous Lunch Selector'
+  menu_list:  'All menus'
+  menu_created: 'Menu created'
+  menu_destroyed: 'Menu destroyed'
+  order_created: 'Order placed'
+  meal_added: 'Meal added'
+  meal_error: 'Something went wrong'
