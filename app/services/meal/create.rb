@@ -42,5 +42,3 @@ class Meal
     end
   end
 end
-
-#notify(:notice, meal ? "#{t(:meal_added)}!" : "#{t(:meal_error)}!")

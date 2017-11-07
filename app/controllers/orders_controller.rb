@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
       menu:   menu
     )
 
-    notify(:notice, "#{t(:order_created)}!") if order
+    notify(:notice, "#{t('flash.order_created')}!") if order
 
     redirect_to menu
   end

@@ -1,8 +1,9 @@
 uk:
   website_title: 'Неймовірно прекраса обиральня підвечірків'
   menu_list: 'Усі списки наїдків'
-  menu_created: 'Список наїдків створено'
-  menu_destroyed: 'Список наїдків спалено'
-  order_created: 'Замовлення додано'
-  meal_added: 'Наїдок додано'
-  meal_error: 'Не жени коней'
+  flash:
+    menu_created: 'Список наїдків створено'
+    menu_destroyed: 'Список наїдків спалено'
+    order_created: 'Замовлення додано'
+    meal_added: 'Наїдок додано'
+    meal_error: 'Не жени коней'
