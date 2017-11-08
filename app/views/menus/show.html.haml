@@ -3,9 +3,7 @@
 %ul
   = render @facade.orders
 
-= render partial: 'orders/form', locals: { menu: @facade.menu, order: @facade.new_order, first_course: @facade.first_course, main_course: @facade.main_course, beverage: @facade.beverage }
-
-= render @facade.meals
+= render partial: 'orders/form', locals: { facade: @facade }
 
 = link_to 'Add meals!', edit_menu_path(@facade.menu)
 %br

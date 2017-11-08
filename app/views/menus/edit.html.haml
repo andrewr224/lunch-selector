@@ -1,5 +1,15 @@
 %h1 Edit today's menu
-= render @facade.meals
+
+%h4= t(:first_course)
+= render partial: 'meals/meal', collection: @facade.first_course, locals: {facade: @facade}
+%br
+%h4= t(:main_course)
+= render partial: 'meals/meal', collection: @facade.main_course, locals: {facade: @facade}
+%br
+%h4= t(:beverage)
+= render partial: 'meals/meal', collection: @facade.beverage, locals: {facade: @facade}
+%br
+
 = render partial: 'meals/form', locals: { menu: @facade.menu, meal: @facade.new_meal }
 
 = link_to "Done!", menu_path(@facade.menu)

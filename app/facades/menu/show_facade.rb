@@ -14,6 +14,10 @@ class Menu
       @orders ||= menu.orders.decorate
     end
 
+    def meal_price(meal)
+      meal.menu_items.find_by(menu_id: id).price
+    end
+
     def menu
       @menu ||= Menu.find_by(id: id)&.decorate
     end

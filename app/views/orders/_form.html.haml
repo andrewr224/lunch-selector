@@ -1,13 +1,18 @@
 %h1 Select your meals for today
-= form_for [menu, order] do |f|
-  = f.label :first_course
-  = render partial: 'meals/meal', collection: first_course
-  %br
-  = f.label :main_course
-  = render partial: 'meals/meal', collection: main_course
-  %br
-  = f.label :beverage
-  = render partial: 'meals/meal', collection: beverage
-  %br
+= form_for [facade.menu, facade.new_order] do |f|
+  %p
+    = f.label :first_course
+    = render partial: 'orders/meal', collection: facade.first_course, locals: {facade: facade}
+
+  %p
+    = f.label :main_course
+    = render partial: 'meals/meal', collection: facade.main_course, locals: {facade: facade}
+
+  %p
+    = f.label :beverage
+    = render partial: 'meals/meal', collection: facade.beverage, locals: {facade: facade}
 
   %p= f.submit 'Submit'
+
+
+

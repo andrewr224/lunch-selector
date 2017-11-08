@@ -24,9 +24,10 @@ class Meal
       meal = new_or_existing_meal(params)
 
       return if menu.meals.include?(meal)
+      params = params[:menu_item].symbolize_keys
 
       MenuItem.create(
-        price: params[:menu_item]['price'],
+        price: params[:price],
         menu:  menu,
         meal:  meal
       )
