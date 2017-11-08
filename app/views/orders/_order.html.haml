@@ -1,1 +1,1 @@
-%li= "Order for #{order.stamp}"
+%li= "Order for #{order.stamp}:#{render partial: 'orders/meal', collection: order.meals}"

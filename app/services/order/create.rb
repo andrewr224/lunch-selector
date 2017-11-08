@@ -6,8 +6,7 @@ class Order
     end
 
     def call
-      binding.pry
-      order if order.save
+      order.tap { |o| o.save }
     end
 
     private
