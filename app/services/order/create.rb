@@ -1,19 +1,21 @@
 class Order
   class Create < ApplicationService
     def initialize(params = {})
-      @menu = params[:menu]
+      @params = params[:params]
+      @menu   = params[:menu]
     end
 
     def call
+      binding.pry
       order if order.save
     end
 
     private
 
-    attr_reader :menu
+    attr_reader :params, :menu
 
     def order
-      @order ||= menu.orders.new
+      @order ||= menu.orders.new(params)
     end
   end
 end

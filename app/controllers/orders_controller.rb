@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   def create
     order = Order::Create.call(
-      params: params,
+      params: order_params,
       menu:   menu
     )
 
@@ -14,5 +14,9 @@ class OrdersController < ApplicationController
 
   def menu
     @menu ||= Menu.find_by(id: params[:menu_id])
+  end
+
+  def order_params
+    params.require(:order).permit(order_items_attributes: %i[meal_id])
   end
 end

@@ -1,16 +1,8 @@
 %h1 Select your meals for today
 = form_for [facade.menu, facade.new_order] do |f|
   %p
-    = f.label :first_course
-    = render partial: 'orders/meal', collection: facade.first_course, locals: {facade: facade}
-
-  %p
-    = f.label :main_course
-    = render partial: 'meals/meal', collection: facade.main_course, locals: {facade: facade}
-
-  %p
-    = f.label :beverage
-    = render partial: 'meals/meal', collection: facade.beverage, locals: {facade: facade}
+    = f.fields_for :order_items do |oif|
+      = oif.select :meal_id, options_from_collection_for_select(oif.object.meals_for_select, :id, :name)
 
   %p= f.submit 'Submit'
 
