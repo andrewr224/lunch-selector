@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe 'ShowFacade' do
-  subject(:menu_facade) { Menu::ShowFacade.new(create(:menu)) }
+RSpec.describe 'MenuFacade' do
+  subject(:menu_facade) { Menu::MenuFacade.new(create(:menu, :with_meals)) }
 
   it 'still has a menu object' do
     expect(menu_facade.menu).to be_a Menu
@@ -10,6 +10,30 @@ RSpec.describe 'ShowFacade' do
   it 'can access methods from decorators' do
     expect(menu_facade.menu.day_stamp).to be_a String
   end
+
+  context 'when menu has meals' do
+    let(:meal) { menu_facade.meals.first }
+
+    it 'returns meals sorted by courses' do
+      expect(menu_facade.courses).not_to be_empty
+    end
+
+    it 'returns price for a given meal' do
+      expect(menu_facade.meal_price(meal)).to be_an Integer
+    end
+  end
+
+  context 'when menu has no meals' do
+    subject(:menu_facade) { Menu::MenuFacade.new(create(:menu)) }
+
+    it 'returns meals sorted by courses' do
+      expect(menu_facade.courses).to be_empty
+    end
+  end
+end
+
+RSpec.describe 'ShowFacade' do
+  subject(:menu_facade) { Menu::ShowFacade.new(create(:menu)) }
 
   describe '#new_order' do
     it { expect(menu_facade.new_order).to be_an Order }
