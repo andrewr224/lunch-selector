@@ -4,9 +4,11 @@ RSpec.feature 'Orders', type: :feature do
   let(:menu) { create(:menu) }
 
   before do
-    menu.meals.create(name: 'Taco', course: :first_course)
-    menu.meals.create(name: 'Pasta', course: :main_course)
-    menu.meals.create(name: 'Tea', course: :beverage)
+    menu.meals.create(name: 'Taco',     course: :first_course)
+    menu.meals.create(name: 'Pasta',    course: :main_course)
+    menu.meals.create(name: 'Tortilla', course: :main_course)
+    menu.meals.create(name: 'Tea',      course: :beverage)
+    menu.meals.create(name: 'Horchata', course: :beverage)
   end
 
   describe 'adding orders' do
@@ -18,7 +20,21 @@ RSpec.feature 'Orders', type: :feature do
         select 'Tea'
         click_button 'Submit'
       end
-      expect(page).to have_content 'Order placed!'
+      expect(page).to have_content 'Taco Pasta Tea'
+    end
+  end
+
+  describe 'deleting orders' do
+    scenario 'deletes orders' do
+      visit menu_path menu
+      within('.new_order') do
+        select 'Taco'
+        select 'Pasta'
+        select 'Tea'
+        click_button 'Submit'
+      end
+      click_on 'Delete Order'
+      expect(page).to have_content 'Order destroyed'
     end
   end
 end

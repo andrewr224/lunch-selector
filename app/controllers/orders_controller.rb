@@ -10,6 +10,16 @@ class OrdersController < ApplicationController
     redirect_to menu
   end
 
+  def destroy
+    @order ||= Order.find_by(id: params[:id])
+
+    @order.destroy
+
+    notify(:notice, "#{t('flash.order_deleted')}!")
+
+    redirect_back(fallback_location: root_path)
+  end
+
   private
 
   def menu

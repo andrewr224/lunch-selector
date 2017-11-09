@@ -5,6 +5,7 @@ uk:
     menu_created: Список наїдків створено
     menu_destroyed: Список наїдків спалено
     order_created: Замовлення додано
+    order_deleted: Замовлення спалено
     meal_added: Наїдок додано
     meal_error: Не жени коней
   first_course: Перше
