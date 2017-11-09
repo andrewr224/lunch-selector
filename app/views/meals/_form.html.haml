@@ -8,11 +8,11 @@
   %p
     = f.label :course
     %br
-    = f.radio_button :course, "First Course", checked: true
+    = f.radio_button :course, :first_course
     = f.label :first_course, "First Course"
-    = f.radio_button :course, "Main Course"
+    = f.radio_button :course, :main_course
     = f.label :main_course, "Main Course"
-    = f.radio_button :course, "Beverage"
+    = f.radio_button :course, :beverage
     = f.label :beverage, "Beverage"
 
   %p

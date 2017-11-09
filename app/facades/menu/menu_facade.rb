@@ -10,16 +10,20 @@ class Menu
       @menu ||= Menu.find_by(id: id)&.decorate
     end
 
+    def courses
+      [first_course, main_course, beverage].compact
+    end
+
     def first_course
-      Meal.first_course
+      menu.meals.first_course if menu.meals.first_course.any?
     end
 
     def main_course
-      Meal.main_course
+      menu.meals.main_course if menu.meals.main_course.any?
     end
 
     def beverage
-      Meal.beverage
+      menu.meals.beverage if menu.meals.beverage.any?
     end
 
     def meal_price(meal)

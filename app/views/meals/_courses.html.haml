@@ -1,0 +1,4 @@
+%h3= t(courses.first.course)
+
+= render partial: 'meals/meal', collection: facade.courses[courses_counter], locals: {facade: facade}
+
