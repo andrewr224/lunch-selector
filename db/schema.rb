@@ -12,18 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20171103104530) do
 
-  create_table "choices", force: :cascade do |t|
-    t.integer "order_id"
-    t.integer "article_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["article_id"], name: "index_choices_on_article_id"
-    t.index ["order_id"], name: "index_choices_on_order_id"
-  end
-
   create_table "meals", force: :cascade do |t|
     t.string "name"
-    t.string "course"
+    t.integer "course"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

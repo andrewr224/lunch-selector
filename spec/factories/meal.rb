@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :meal do
     name 'Pizza'
-    course 'Main Course'
+    course :main_course
   end
 end

@@ -8,8 +8,9 @@ RSpec.feature 'Meals', type: :feature do
 
   def submit_the_form
     within('.new_meal') do
-      fill_in 'Name',  with: name
+      fill_in 'Name', with: name
       fill_in 'Price', with: price
+      choose(id: 'meal_course_main_course')
       click_button 'Submit'
     end
   end
