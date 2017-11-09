@@ -26,8 +26,8 @@ RSpec.describe 'MenuFacade' do
   context 'when menu has no meals' do
     subject(:menu_facade) { Menu::MenuFacade.new(create(:menu)) }
 
-    it 'returns meals sorted by courses' do
-      expect(menu_facade.courses).to be_empty
+    it 'returns empty collections' do
+      expect(menu_facade.courses[0]).to be_empty
     end
   end
 end

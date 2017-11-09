@@ -11,19 +11,14 @@ class Menu
     end
 
     def courses
-      [first_course, main_course, beverage].compact
+      Meal.courses.keys.map(&method(:meals_by_course))
     end
 
-    def first_course
-      menu.meals.first_course if menu.meals.first_course.any?
-    end
-
-    def main_course
-      menu.meals.main_course if menu.meals.main_course.any?
-    end
-
-    def beverage
-      menu.meals.beverage if menu.meals.beverage.any?
+    def meals_by_course(course)
+      ::MealDecorator.decorate_collection(
+        meals.send(course),
+        context: { course: course }
+      )
     end
 
     def meal_price(meal)

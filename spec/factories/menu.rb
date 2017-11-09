@@ -7,7 +7,6 @@ FactoryBot.define do
         menu.menu_items << build(:menu_item, meal: create(:first_course))
         menu.menu_items << build(:menu_item, meal: create(:main_course))
         menu.menu_items << build(:menu_item, meal: create(:beverage))
-        #menu.meals << create(:beverage)
       end
     end
   end
