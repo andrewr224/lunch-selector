@@ -11,15 +11,15 @@ class Menu
     end
 
     def first_course
-      meals.select{ |m| m.course == "First Course" }
+      Meal.first_course
     end
 
     def main_course
-      meals.select{ |m| m.course == "Main Course" }
+      Meal.main_course
     end
 
     def beverage
-      meals.select{ |m| m.course == "Beverage" }
+      Meal.beverage
     end
 
     def meal_price(meal)

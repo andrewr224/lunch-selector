@@ -17,9 +17,9 @@ class Menu
     attr_reader :order
 
     def build_order_items
-      order.order_items.build(meal_attributes: { course: 'First Course' })
-      order.order_items.build(meal_attributes: { course: 'Main Course' })
-      order.order_items.build(meal_attributes: { course: 'Beverage' })
+      Meal.courses.each_key do |course|
+        order.order_items.build(meal_attributes: { course: course })
+      end
     end
   end
 end
