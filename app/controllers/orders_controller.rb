@@ -16,7 +16,6 @@ class OrdersController < ApplicationController
     @order.destroy
 
     notify(:notice, "#{t('flash.order_deleted')}!")
-
     redirect_back(fallback_location: root_path)
   end
 
@@ -27,6 +26,6 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(order_items_attributes: %i[meal_id])
+    params.fetch(:order, {}).permit(order_items_attributes: %i[meal_id])
   end
 end
