@@ -13,13 +13,9 @@ class Menu
     end
 
     def total_cost
-      sum_total = 0
-
-      ordered_meals.flatten.each do |meal|
-        sum_total += menu.menu_items.find_by(meal_id: meal.id).price
-      end
-
-      sum_total
+      ordered_meals.map do |meal|
+        menu.menu_items.find_by(meal_id: meal.id).price
+      end .reduce(:+)
     end
 
     private
@@ -27,13 +23,7 @@ class Menu
     attr_reader :order
 
     def ordered_meals
-      ordered_meals_list = []
-
-      menu.orders.each do |order|
-        ordered_meals_list << order.meals
-      end
-
-      ordered_meals_list
+      menu.orders.map(&:meals).flatten
     end
 
     def build_order_items
