@@ -6,8 +6,8 @@ class MealsController < ApplicationController
       menu:        menu
     )
 
-    notify(:notice, "#{t('flash.meal_added')}!") if meal
-    notify(:notice, "#{t('flash.meal_error')}!") unless meal
+    notify(:notice, t('.added')) if meal
+    notify(:notice, t('.error')) unless meal
 
     redirect_back(fallback_location: root_path)
   end

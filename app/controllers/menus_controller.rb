@@ -12,10 +12,10 @@ class MenusController < ApplicationController
   end
 
   def create
-    menu = Menu.create
+    @menu = Menu.create
 
-    notify(:notice, "#{t('flash.menu_created')}!")
-    redirect_to menu
+    notify(:notice, t('.create'))
+    redirect_to @menu
   end
 
   def edit
@@ -25,7 +25,7 @@ class MenusController < ApplicationController
   def destroy
     Menu::Destroy.call(params[:id])
 
-    notify(:notice, "#{t('flash.menu_destroyed')}!")
+    notify(:notice, t('.destroy'))
     redirect_to menus_path
   end
 end

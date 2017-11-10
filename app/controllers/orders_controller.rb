@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
       menu:   menu
     )
 
-    notify(:notice, "#{t('flash.order_created')}") if order
+    notify(:notice, t('.create')) if order
 
     redirect_to menu
   end
@@ -21,6 +21,7 @@ class OrdersController < ApplicationController
       menu:   menu
     )
 
+    notify(:notice, t('.update'))
     redirect_to menu
   end
 
@@ -29,7 +30,7 @@ class OrdersController < ApplicationController
 
     @order.destroy
 
-    notify(:notice, "#{t('flash.order_deleted')}!")
+    notify(:notice, t('.destroy'))
     redirect_to menu
   end
 

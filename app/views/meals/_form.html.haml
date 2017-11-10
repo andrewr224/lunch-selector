@@ -1,4 +1,4 @@
-%h3 Add a meal to the menu
+%h3= "#{t :add_meals_to_menu}"
 = form_for [menu, meal] do |f|
   %p
     = f.label :name
@@ -19,4 +19,4 @@
     = f.number_field :price
 
   %p
-    = f.submit 'Submit'
+    = f.submit

@@ -1,4 +1,4 @@
-%h1 Select your meals for today
+%h1= t :select_meals
 = form_for [order.menu, order] do |f|
   %p
     = f.fields_for :order_items do |oif|

@@ -1,13 +1,29 @@
 en:
   website_title: Exceedingly gorgeous Lunch Selector
-  menu_list:  All menus
-  flash:
-    menu_created: Menu created
-    menu_destroyed: Menu destroyed
-    order_created: Order placed
-    order_deleted: Order destroyed
-    meal_added: Meal added
-    meal_error: Something went wrong
+  dashboard: Dashboard
+  menu_list: All menus
+  new_menu: Create today's menu.
+  edit_menu: On today's list
+  add_meals_to_menu: Add a meal to the menu
+  order_list: Order List
+  add_meals: Add meals!
+  delete_menu: Delete Menu!
+  select_meals: Select your meals for today
+  edit_order: Edit Order
+  delete_order: Delete Order!
+  back: << Back
+  done: Done!
   first_course: First Course
   main_course: Main Course
   beverage: Beverage
+  menus:
+    create: Menu created!
+    destroy: Menu destroyed!
+  meals:
+    create:
+      added: Meal added!
+      error: Something went wrong :(
+  orders:
+    create: Order placed.
+    update: Order updated.
+    destroy: Order destroyed.
