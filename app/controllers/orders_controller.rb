@@ -5,7 +5,21 @@ class OrdersController < ApplicationController
       menu:   menu
     )
 
-    notify(:notice, "#{t('flash.order_created')}!") if order
+    notify(:notice, "#{t('flash.order_created')}") if order
+
+    redirect_to menu
+  end
+
+  def edit
+    @order ||= Order.find_by(id: params[:id]).decorate
+  end
+
+  def update
+    Order::Update.call(
+      id: params[:id],
+      params: order_params,
+      menu:   menu
+    )
 
     redirect_to menu
   end
@@ -16,7 +30,7 @@ class OrdersController < ApplicationController
     @order.destroy
 
     notify(:notice, "#{t('flash.order_deleted')}!")
-    redirect_back(fallback_location: root_path)
+    redirect_to menu
   end
 
   private

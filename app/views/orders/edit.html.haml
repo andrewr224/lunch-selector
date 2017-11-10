@@ -1,0 +1,5 @@
+%p= "Edit the Order for #{@order.stamp}:"
+%p
+  = render partial: 'orders/form', locals: { order: @order }
+
+%p= "#{link_to 'Delete Order', menu_order_path(@order.menu, @order), method: :delete} "
