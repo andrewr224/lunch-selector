@@ -12,9 +12,29 @@ class Menu
       @orders ||= menu.orders.decorate
     end
 
+    def total_cost
+      sum_total = 0
+
+      ordered_meals.flatten.each do |meal|
+        sum_total += menu.menu_items.find_by(meal_id: meal.id).price
+      end
+
+      sum_total
+    end
+
     private
 
     attr_reader :order
+
+    def ordered_meals
+      ordered_meals_list = []
+
+      menu.orders.each do |order|
+        ordered_meals_list << order.meals
+      end
+
+      ordered_meals_list
+    end
 
     def build_order_items
       Meal.courses.each_key do |course|

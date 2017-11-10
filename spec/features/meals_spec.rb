@@ -11,7 +11,7 @@ RSpec.feature 'Meals', type: :feature do
       fill_in 'Name', with: name
       fill_in 'Price', with: price
       choose(id: 'meal_course_main_course')
-      click_button 'Submit'
+      click_button 'Create Meal'
     end
   end
 
@@ -29,7 +29,7 @@ RSpec.feature 'Meals', type: :feature do
         visit edit_menu_path menu
         within('.new_meal') do
           fill_in 'Name', with: name
-          click_button 'Submit'
+          click_button 'Create Meal'
         end
         expect(page).to have_no_content(name)
       end
@@ -38,7 +38,7 @@ RSpec.feature 'Meals', type: :feature do
         visit edit_menu_path menu
         within('.new_meal') do
           fill_in 'Price', with: price
-          click_button 'Submit'
+          click_button 'Create Meal'
         end
         expect(page).to have_no_content(name)
       end

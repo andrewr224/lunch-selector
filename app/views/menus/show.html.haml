@@ -4,6 +4,8 @@
 %ul
   = render @facade.orders
 
+%p= "#{t :total_cost}: #{@facade.total_cost}"
+
 = render partial: 'orders/form', locals: { order: @facade.new_order }
 
 = link_to "#{t :add_meals}", edit_menu_path(@facade.menu)

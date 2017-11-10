@@ -33,10 +33,16 @@ RSpec.describe 'MenuFacade' do
 end
 
 RSpec.describe 'ShowFacade' do
-  subject(:menu_facade) { Menu::ShowFacade.new(create(:menu)) }
+  subject(:menu_facade) { Menu::ShowFacade.new(create(:menu, :with_orders)) }
 
   describe '#new_order' do
     it { expect(menu_facade.new_order).to be_an Order }
+  end
+
+  describe '#total_cost' do
+    it "calculates total price for today's orders" do
+      expect(menu_facade.total_cost).to be_an Integer
+    end
   end
 end
 
