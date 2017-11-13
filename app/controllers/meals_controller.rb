@@ -2,7 +2,7 @@ class MealsController < ApplicationController
   def create
     meal = Meal::Create.call(
       meal_params: params[:meal],
-      form:        MealForm.new(meal: Meal.new, menu_item: MenuItem.new),
+      form:        meal_form,
       menu:        menu
     )
 
@@ -16,6 +16,10 @@ class MealsController < ApplicationController
   end
 
   private
+
+  def meal_form
+    @meal_form ||= MealForm.new(meal: Meal.new, menu_item: MenuItem.new)
+  end
 
   def menu
     @menu ||= Menu.find_by(id: params[:menu_id])
