@@ -6,7 +6,7 @@ class Order
     end
 
     def call
-      order.tap { |o| o.save }
+      order.tap(&:save)
     end
 
     private

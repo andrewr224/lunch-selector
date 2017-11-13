@@ -13,17 +13,19 @@ class Menu
     end
 
     def total_cost
-      ordered_meals.map do |meal|
-        menu.menu_items.find_by(meal_id: meal.id).price
-      end .reduce(:+)
+      ordered_meals.map(&method(:current_price)).reduce(:+)
     end
 
     private
 
     attr_reader :order
 
+    def current_price(meal)
+      menu.menu_items.find_by(meal_id: meal.id).price
+    end
+
     def ordered_meals
-      menu.orders.map(&:meals).flatten
+      menu.orders.flat_map(&:meals)
     end
 
     def build_order_items

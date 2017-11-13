@@ -10,9 +10,7 @@ class Meal
       ActiveRecord::Base.transaction do
         return unless form.validate(meal_params)
 
-        form.save do |params|
-          add_to_menu(params)
-        end
+        form.save(&method(:add_to_menu))
       end
     end
 
@@ -21,10 +19,13 @@ class Meal
     attr_reader :form, :meal_params, :menu
 
     def add_to_menu(params)
-      meal = new_or_existing_meal(params)
+      meal = new_or_existing_meal(params[:meal])
 
-      return if menu.meals.include?(meal)
-      params = params[:menu_item].symbolize_keys
+      create_menu_item(params[:menu_item], meal) unless already_added?(meal)
+    end
+
+    def create_menu_item(params, meal)
+      params = params.symbolize_keys
 
       MenuItem.create(
         price: params[:price],
@@ -33,8 +34,12 @@ class Meal
       )
     end
 
+    def already_added?(meal)
+      menu.meals.include?(meal)
+    end
+
     def new_or_existing_meal(params)
-      params = params[:meal].symbolize_keys
+      params = params.symbolize_keys
 
       Meal.find_or_initialize_by(name: params[:name].capitalize) do |meal|
         meal.name   = params[:name].capitalize

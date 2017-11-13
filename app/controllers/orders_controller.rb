@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
 
   def update
     Order::Update.call(
-      id: params[:id],
+      id:     params[:id],
       params: order_params,
       menu:   menu
     )

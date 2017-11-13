@@ -30,7 +30,7 @@ RSpec.feature 'Orders', type: :feature do
       select 'Taco'
       select 'Pasta'
       select 'Tea'
-      click_button 'Submit'
+      click_button 'Create Order'
     end
   end
 

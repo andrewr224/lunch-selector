@@ -6,8 +6,11 @@ class MealsController < ApplicationController
       menu:        menu
     )
 
-    notify(:notice, t('.added')) if meal
-    notify(:notice, t('.error')) unless meal
+    if meal
+      notify(:notice, t('.added'))
+    else
+      notify(:notice, t('.error'))
+    end
 
     redirect_back(fallback_location: root_path)
   end
