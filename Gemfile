@@ -31,6 +31,7 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'capybara', '~> 2.13'
+  gem 'database_cleaner'
   gem 'factory_bot_rails', '~> 4.0'
   gem 'pry'
   gem 'rspec-rails', '~> 3.6'
