@@ -1,11 +1,11 @@
 en:
   website_title: Exceedingly gorgeous Lunch Selector
   dashboard: Dashboard
-  menu_list: All menus
+  menu_list: "All menus:"
   new_menu: Create today's menu.
-  edit_menu: On today's list
+  edit_menu: "On today's list:"
   add_meals_to_menu: Add a meal to the menu
-  order_list: Order List
+  order_list: "Order List:"
   total_cost: Total price
   add_meals: Add meals!
   delete_menu: Delete Menu!

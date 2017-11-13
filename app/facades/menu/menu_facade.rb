@@ -21,10 +21,6 @@ class Menu
       )
     end
 
-    def meal_price(meal)
-      meal.menu_items.find_by(menu_id: id).price
-    end
-
     private
 
     attr_reader :id

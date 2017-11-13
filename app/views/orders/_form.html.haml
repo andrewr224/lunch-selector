@@ -4,4 +4,4 @@
     = f.fields_for :order_items do |oif|
       = oif.select :meal_id, options_from_collection_for_select(oif.object.meals_for_select, :id, :name)
 
-  %p= f.submit 'Submit'
+  %p= f.submit

@@ -17,10 +17,6 @@ RSpec.describe 'MenuFacade' do
     it 'returns meals sorted by courses' do
       expect(menu_facade.courses).not_to be_empty
     end
-
-    it 'returns price for a given meal' do
-      expect(menu_facade.meal_price(meal)).to be_an Integer
-    end
   end
 
   context 'when menu has no meals' do

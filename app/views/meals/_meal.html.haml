@@ -1,1 +1,1 @@
-%p= "#{meal.name} - #{number_to_currency(facade.meal_price(meal))}"
+%p= "#{meal.name} - #{number_to_currency(meal.todays_price(facade.menu))}"

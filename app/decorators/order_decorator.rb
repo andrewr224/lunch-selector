@@ -4,6 +4,6 @@ class OrderDecorator < Draper::Decorator
   decorates_association :order_items
 
   def stamp
-    "#{created_at.strftime('%A')}"
+    order.menu.created_at.strftime('%A')
   end
 end

@@ -1,15 +1,15 @@
 %h1= "Menu for #{@facade.menu.day_stamp}"
-%h2= "#{t :order_list}:"
+%h2= t :order_list
 
 %ul
   = render @facade.orders
 
 %p= "#{t :total_cost}: #{@facade.total_cost}"
 
-= render partial: 'orders/form', locals: { order: @facade.new_order }
+= render 'orders/form', order: @facade.new_order
 
-= link_to "#{t :add_meals}", edit_menu_path(@facade.menu)
+= link_to t(:add_meals), edit_menu_path(@facade.menu)
 %br
-= link_to "#{t :delete_menu}", menu_path(@facade.menu), method: :delete
+= link_to t(:delete_menu), menu_path(@facade.menu), method: :delete
 %br
-= link_to "#{t :dashboard}", menus_path
+= link_to t(:dashboard), menus_path

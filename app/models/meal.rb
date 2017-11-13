@@ -4,5 +4,5 @@ class Meal < ApplicationRecord
   has_many :menus,       through:   :menu_items
   has_many :orders,      through:   :order_items
 
-  enum course: [:first_course, :main_course, :beverage]
+  enum course: %I[first_course main_course beverage]
 end
