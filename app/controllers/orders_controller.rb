@@ -26,9 +26,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    @order ||= Order.find_by(id: params[:id])
-
-    @order.destroy
+    Order::Destroy.call(params[:id])
 
     notify(:notice, t('.destroy'))
     redirect_to menu

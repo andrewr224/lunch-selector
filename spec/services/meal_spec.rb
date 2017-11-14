@@ -1,18 +1,25 @@
 require 'rails_helper'
 
 RSpec.describe Meal::Create do
-  let(:menu) { create(:menu) }
-  let(:form) { MealForm.new(meal: build(:meal), menu_item: build(:menu_item)) }
+  let(:form) do
+    MealForm.new(
+      meal: build(:meal),
+      menu_item: build(:menu_item)
+    )
+  end
+  let(:meal) do
+    build(:meal, name: 'Pizza', course: 'Main Course')
+  end
   let(:meal_params) do
     { meal: attributes_for(:meal),
       menu_item: attributes_for(:menu_item) }
   end
 
   def create_meal
-    Meal::Create.call(
+    described_class.call(
       meal_params: meal_params,
       form:        form,
-      menu:        menu
+      menu:        create(:menu)
     )
   end
 

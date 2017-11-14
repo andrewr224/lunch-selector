@@ -7,6 +7,8 @@ RSpec.feature 'Meals', type: :feature do
   let(:price) { 12 }
 
   def submit_the_form
+    visit edit_menu_path menu
+
     within('.new_meal') do
       fill_in 'Name', with: name
       fill_in 'Price', with: price
@@ -18,14 +20,12 @@ RSpec.feature 'Meals', type: :feature do
   describe 'adding meals' do
     context 'when the form is filled properly' do
       scenario 'creates a new meal' do
-        visit edit_menu_path(menu)
-        submit_the_form
-        expect(page).to have_content(name, count: 1)
+        expect { submit_the_form }.to change(Menu, :count).by(1)
       end
     end
 
     context 'when the form is not filled properly' do
-      scenario 'does not create a new meal' do
+      scenario 'does not create a meal without price' do
         visit edit_menu_path menu
         within('.new_meal') do
           fill_in 'Name', with: name
@@ -34,7 +34,7 @@ RSpec.feature 'Meals', type: :feature do
         expect(page).to have_no_content(name)
       end
 
-      scenario 'does not create a new meal' do
+      scenario 'does not create a meal without name' do
         visit edit_menu_path menu
         within('.new_meal') do
           fill_in 'Price', with: price
@@ -46,11 +46,10 @@ RSpec.feature 'Meals', type: :feature do
 
     context 'when meal name already exists' do
       before do
-        create(:menu_item, menu: menu, meal: meal)
+        submit_the_form
       end
 
       scenario 'does not create a new meal' do
-        visit edit_menu_path menu
         expect { submit_the_form }.not_to change(Meal, :count)
       end
     end

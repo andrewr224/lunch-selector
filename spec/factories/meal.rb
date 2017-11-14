@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :meal do
-    name 'Pizza'
-    course :main_course
+    sequence(:name) { |n| "Tasty stuff #{n}" }
+    course { %I[first_course main_course beverage].sample }
   end
 
   factory :first_course, class: Meal do

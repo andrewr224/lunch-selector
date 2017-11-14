@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'MealForm' do
   let(:params) do
-    { meal:      { name: 'pizza', course: 'main course' },
+    { meal:      attributes_for(:meal),
       menu_item: { price: 15 } }
   end
   subject(:form) do

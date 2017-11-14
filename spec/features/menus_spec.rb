@@ -23,14 +23,6 @@ RSpec.feature 'Menus', type: :feature do
       visit menu_path menu
       expect(page).to have_content 'Menu for'
     end
-
-    context 'when has meals and orders' do
-      subject(:menu_with_orders) { create(:menu, :with_orders) }
-      scenario 'shows list of orders' do
-        visit menu_path menu
-        expect(page).to have_content 'Total price:'
-      end
-    end
   end
 
   describe 'delete menu' do
