@@ -1,12 +1,15 @@
 require 'rails_helper'
 
 RSpec.feature 'Orders', type: :feature do
-  let(:menu) { create(:menu, :with_meals) }
+  let(:menu) { create(:menu, :with_meals, meal_count: 1) }
 
   def place_order
     visit menu_path menu
 
     within('.new_order') do
+      select 'Taco'
+      select 'Tortilla'
+      select 'Horchata'
       click_button 'Order'
     end
   end

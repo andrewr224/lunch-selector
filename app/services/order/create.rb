@@ -6,7 +6,7 @@ class Order
     end
 
     def call
-      order.tap(&:save)
+      return order if order.save
     end
 
     private

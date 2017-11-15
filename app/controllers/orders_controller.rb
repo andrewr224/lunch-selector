@@ -39,6 +39,6 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.fetch(:order, {}).permit(order_items_attributes: %i[meal_id])
+    params.require(:order).permit(order_items_attributes: %i[meal_id])
   end
 end
