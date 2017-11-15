@@ -7,16 +7,21 @@ RSpec.describe Order::Create do
 end
 
 RSpec.describe Order::Update do
-  let(:order) { build(:order) }
+  let(:menu) { create(:menu, :with_orders) }
+  let(:order_id) { menu.orders.first.id }
+  let(:form_params) do
+    { order_items_attributes:
+      { '0' => { meal_id: menu.meals[0].id },
+        '1' => { meal_id: menu.meals[1].id },
+        '2' => { meal_id: menu.meals[2].id } } }
+  end
   let(:params) do
-    { id:     order.id,
-      menu:   order.menu,
-      params: attributes_for(:order_item) }
+    { id:     order_id,
+      menu:   menu,
+      params: form_params }
   end
 
-  xit 'updates an order' do
-    expect(described_class.call(params)).to eq(42)
-  end
+  it { expect(described_class.call(params)).to be_truthy }
 end
 
 RSpec.describe Order::Destroy do
