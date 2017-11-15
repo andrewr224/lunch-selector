@@ -1,6 +1,6 @@
 %p
   = render 'orders/form', order: @order
 
-= link_to t(:delete_order), menu_order_path(@order.menu, @order), method: :delete
+= link_to t('views.orders.delete'), menu_order_path(@order.menu, @order), method: :delete
 %br
-= link_to t(:back), menu_path(@order.menu)
+= link_to t('views.back'), menu_path(@order.menu)

@@ -5,7 +5,11 @@ class OrdersController < ApplicationController
       menu:   menu
     )
 
-    notify(:notice, t('.create')) if order
+    if order
+      notify(:notice, t('controllers.orders.flash.create'))
+    else
+      notify(:error, t('controllers.orders.flash.error'))
+    end
 
     redirect_to menu
   end
@@ -21,14 +25,14 @@ class OrdersController < ApplicationController
       menu:   menu
     )
 
-    notify(:notice, t('.update'))
+    notify(:notice, t('controllers.orders.flash.update'))
     redirect_to menu
   end
 
   def destroy
     Order::Destroy.call(params[:id])
 
-    notify(:notice, t('.destroy'))
+    notify(:notice, t('controllers.orders.flash.destroy'))
     redirect_to menu
   end
 

@@ -8,7 +8,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
   %body
-    %h1= t :website_title
+    %h1= t('views.layouts.title')
     = render 'application/navbar'
     = render 'application/flash'
     = yield

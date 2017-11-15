@@ -7,9 +7,9 @@ class MealsController < ApplicationController
     )
 
     if meal
-      notify(:notice, t('.added'))
+      notify(:notice, t('controllers.meals.flash.create'))
     else
-      notify(:notice, t('.error'))
+      notify(:error, t('controllers.meals.flash.error'))
     end
 
     redirect_back(fallback_location: root_path)

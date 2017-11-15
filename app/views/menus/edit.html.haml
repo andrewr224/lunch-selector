@@ -1,7 +1,7 @@
-%h1= t :edit_menu
+%h1= t('views.menus.menu')
 
 = render partial: 'meals/courses', collection: @facade.courses, locals: {facade: @facade}
 
 = render 'meals/form', menu: @facade.menu, meal: @facade.new_meal
 
-= link_to t(:done), menu_path(@facade.menu)
+= link_to t('views.done'), menu_path(@facade.menu)

@@ -1,30 +1,46 @@
 uk:
-  website_title: Неймовірно прекраса обиральня підвечірків
-  dashboard: Контрольна панель
-  menu_list: "Усі меню:"
-  new_menu: Створіть сьогоднішнє меню.
-  edit_menu: "Сьогодні в меню:"
-  add_meals_to_menu: Додати страву в меню
-  order_list: "Список замовлень:"
-  total_cost: Загальна вартість
-  add_meals: Додай страву!
-  delete_menu: Знищ список!
-  select_meals: Обери їжу на сьогодні
-  edit_order: Передумати
-  delete_order: Знищ замовлення!
-  back: << Назад
-  done: Готово!
-  first_course: Перше
-  main_course: Друге
-  beverage: Напій
-  menus:
-    create: Меню створено!
-    destroy: Меню знищено!
-  meals:
-    create:
-      added: Страву додано!
-      error: Щось пішло не так :(
-  orders:
-    create: Замовлення додано.
-    update: Замовлення оновлено.
-    destroy: Замовлення знищено.
+  views:
+    layouts:
+      title: Неймовірно прекраса обиральня підвечірків
+    menus:
+      list: "Усі меню:"
+      new: Створіть сьогоднішнє меню
+      orders: "Список замовлень:"
+      total_cost: Загальна вартість
+      add_meals: Додай страву!
+      delete: Знищ список!
+      dashboard: Контрольна панель
+      menu: "Сьогодні в меню:"
+    meals:
+      add: Додати страву в меню
+    orders:
+      meal: Обери їжу
+      select_meals: Обери їжу на сьогодні
+      edit: Передумати
+      delete: Знищ замовлення!
+    back: << Назад
+    done: Готово!
+  controllers:
+    menus:
+      flash:
+        create: Меню створено!
+        destroy: Меню знищено!
+    meals:
+      flash:
+        create: Страву додано!
+        error: Щось пішло не так :(
+    orders:
+      flash:
+        create: Замовлення додано.
+        error: Щось пішло не так :(
+        update: Замовлення оновлено.
+        destroy: Замовлення знищено.
+  activerecord:
+    attributes:
+      meal:
+        name: Назва їжі
+        first_course: Перше
+        main_course: Друге
+        beverage: Напій
+      menu_item:
+        price: Ціна

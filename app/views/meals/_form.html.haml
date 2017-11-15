@@ -1,20 +1,20 @@
-%h3= t :add_meals_to_menu
+%h3= t('views.meals.add')
 = form_for [menu, meal] do |f|
   %p
-    = f.label :name
+    = f.label Meal.human_attribute_name('name')
     %br
     = f.text_field :name
 
   %p
     = f.radio_button :course, :first_course
-    = f.label :first_course
+    = f.label Meal.human_attribute_name('first_course')
     = f.radio_button :course, :main_course
-    = f.label :main_course
+    = f.label Meal.human_attribute_name('main_course')
     = f.radio_button :course, :beverage
-    = f.label :beverage
+    = f.label Meal.human_attribute_name('beverage')
 
   %p
-    = f.label :price
+    = f.label MenuItem.human_attribute_name('price')
     %br
     = f.number_field :price
 

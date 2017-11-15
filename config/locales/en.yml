@@ -1,30 +1,46 @@
 en:
-  website_title: Exceedingly gorgeous Lunch Selector
-  dashboard: Dashboard
-  menu_list: "All menus:"
-  new_menu: Create today's menu.
-  edit_menu: "On today's list:"
-  add_meals_to_menu: Add a meal to the menu
-  order_list: "Order List:"
-  total_cost: Total price
-  add_meals: Add meals!
-  delete_menu: Delete Menu!
-  select_meals: Select your meals for today
-  edit_order: Edit Order
-  delete_order: Delete Order!
-  back: << Back
-  done: Done!
-  first_course: First Course
-  main_course: Main Course
-  beverage: Beverage
-  menus:
-    create: Menu created!
-    destroy: Menu destroyed!
-  meals:
-    create:
-      added: Meal added!
-      error: Something went wrong :(
-  orders:
-    create: Order placed.
-    update: Order updated.
-    destroy: Order destroyed.
+  views:
+    layouts:
+      title: Exceedingly gorgeous Lunch Selector
+    menus:
+      list: "All menus:"
+      new: Create today's menu
+      orders: "Order List:"
+      total_cost: Total cost
+      add_meals: Add meals!
+      delete: Delete Menu!
+      dashboard: Dashboard
+      menu: "On today's list:"
+    meals:
+      add: Add a meal to the menu
+    orders:
+      meal: Select Meal
+      select_meals: Select your meals for today
+      edit: Edit Order
+      delete: Delete Order!
+    back: << Back
+    done: Done!
+  controllers:
+    menus:
+      flash:
+        create: Menu created!
+        destroy: Menu destroyed!
+    meals:
+      flash:
+        create: Meal added!
+        error: Something went wrong :(
+    orders:
+      flash:
+        create: Order placed.
+        error: Something went wrong :(
+        update: Order updated.
+        destroy: Order destroyed.
+  activerecord:
+    attributes:
+      meal:
+        name: Name of the Meal
+        first_course: First Course
+        main_course: Main Course
+        beverage: Beverage
+      menu_item:
+        price: Price

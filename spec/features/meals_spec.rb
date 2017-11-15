@@ -10,8 +10,8 @@ RSpec.feature 'Meals', type: :feature do
     visit edit_menu_path menu
 
     within('.new_meal') do
-      fill_in 'Name', with: name
-      fill_in 'Price', with: price
+      fill_in id: 'meal_name', with: name
+      fill_in id: 'meal_price', with: price
       choose(id: 'meal_course_main_course')
       click_button 'Create Meal'
     end
@@ -28,7 +28,7 @@ RSpec.feature 'Meals', type: :feature do
       scenario 'does not create a meal without price' do
         visit edit_menu_path menu
         within('.new_meal') do
-          fill_in 'Name', with: name
+          fill_in id: 'meal_name', with: name
           click_button 'Create Meal'
         end
         expect(page).to have_no_content(name)
@@ -37,7 +37,7 @@ RSpec.feature 'Meals', type: :feature do
       scenario 'does not create a meal without name' do
         visit edit_menu_path menu
         within('.new_meal') do
-          fill_in 'Price', with: price
+          fill_in id: 'meal_price', with: price
           click_button 'Create Meal'
         end
         expect(page).to have_no_content(name)
