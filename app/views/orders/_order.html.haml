@@ -1,0 +1,5 @@
+%li
+  = "Order for #{order.stamp}:"
+  = render partial: 'orders/meal', collection: order.meals
+  = "| #{link_to "#{t('views.orders.edit')}", edit_menu_order_path(order.menu, order)}"
+  = "| #{link_to "#{t('views.orders.delete')}", menu_order_path(order.menu, order), method: :delete} "

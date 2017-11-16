@@ -1,0 +1,7 @@
+%h1= t('views.orders.select_meals')
+= form_for [order.menu, order] do |f|
+  %p
+    = f.fields_for :order_items do |oif|
+      = oif.select :meal_id, options_from_collection_for_select(oif.object.meals_for_select, :id, :name), prompt: t('views.orders.meal')
+
+  %p= f.submit

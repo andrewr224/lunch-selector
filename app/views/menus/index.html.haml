@@ -1,0 +1,5 @@
+%h1= t('views.menus.list')
+%ul
+  = render @menus
+
+= link_to t('views.menus.new'), new_menu_path

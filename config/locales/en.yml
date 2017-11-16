@@ -1,33 +1,46 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  views:
+    layouts:
+      title: Exceedingly gorgeous Lunch Selector
+    menus:
+      list: "All menus:"
+      new: Create today's menu
+      orders: "Order List:"
+      total_cost: Total cost
+      add_meals: Add meals!
+      delete: Delete Menu!
+      dashboard: Dashboard
+      menu: "On today's list:"
+    meals:
+      add: Add a meal to the menu
+    orders:
+      meal: Select Meal
+      select_meals: Select your meals for today
+      edit: Edit Order
+      delete: Delete Order!
+    back: << Back
+    done: Done!
+  controllers:
+    menus:
+      flash:
+        create: Menu created!
+        destroy: Menu destroyed!
+    meals:
+      flash:
+        create: Meal added!
+        error: Something went wrong :(
+    orders:
+      flash:
+        create: Order placed.
+        error: Something went wrong :(
+        update: Order updated.
+        destroy: Order destroyed.
+  activerecord:
+    attributes:
+      meal:
+        name: Name of the Meal
+        first_course: First Course
+        main_course: Main Course
+        beverage: Beverage
+      menu_item:
+        price: Price
