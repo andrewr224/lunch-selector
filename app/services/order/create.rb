@@ -6,7 +6,7 @@ class Order
     end
 
     def call
-      return order if order.save
+      order if order.save
     end
 
     private
