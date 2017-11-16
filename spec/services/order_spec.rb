@@ -15,6 +15,7 @@ RSpec.describe Order::Update do
         '1' => { meal_id: menu.meals[1].id },
         '2' => { meal_id: menu.meals[2].id } } }
   end
+
   let(:params) do
     { id:     order_id,
       menu:   menu,
@@ -27,9 +28,7 @@ end
 RSpec.describe Order::Destroy do
   let(:order) { build(:order) }
 
-  before do
-    order.save
-  end
+  before { order.save }
 
   it 'deletes an order' do
     expect { described_class.call(order.id) }.to change(Order, :count).by(-1)

@@ -7,9 +7,11 @@ RSpec.describe Meal::Create do
       menu_item: build(:menu_item)
     )
   end
+
   let(:meal) do
     build(:meal, name: 'Pizza', course: 'Main Course')
   end
+
   let(:meal_params) do
     { meal: attributes_for(:meal),
       menu_item: attributes_for(:menu_item) }

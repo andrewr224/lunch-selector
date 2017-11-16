@@ -1,6 +1,6 @@
 %h1= t('views.menus.menu')
 
-= render partial: 'meals/courses', collection: @facade.courses, locals: {facade: @facade}
+= render partial: 'meals/courses', collection: @facade.courses, locals: { facade: @facade }
 
 = render 'meals/form', menu: @facade.menu, meal: @facade.new_meal
 
