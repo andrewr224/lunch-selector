@@ -1,7 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe Order::Create do
-  subject { described_class.call(menu: build(:menu)) }
+  let(:menu) { create(:menu, :with_meals) }
+  let(:user) { create(:user) }
+  let(:form_params) do
+    { order_items_attributes:
+      { '0' => { meal_id: menu.meals[0].id },
+        '1' => { meal_id: menu.meals[1].id },
+        '2' => { meal_id: menu.meals[2].id } } }
+  end
+
+  let(:params) do
+    { user:   user,
+      menu:   menu,
+      params: form_params }
+  end
+
+  subject { described_class.call(params) }
 
   it { is_expected.to be_an Order }
 end

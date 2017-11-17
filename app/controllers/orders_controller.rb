@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   def create
     order = Order::Create.call(
       params: order_params,
+      user:   current_user,
       menu:   menu
     )
 

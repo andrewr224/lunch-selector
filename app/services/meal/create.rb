@@ -7,11 +7,9 @@ class Meal
     end
 
     def call
-      ActiveRecord::Base.transaction do
-        return unless form.validate(meal_params)
+      return unless form.validate(meal_params)
 
-        form.save(&method(:add_to_menu))
-      end
+      form.save(&method(:add_to_menu))
     end
 
     private

@@ -12,10 +12,10 @@ class MenusController < ApplicationController
   end
 
   def create
-    @menu = Menu.create
+    menu = Menu::Create.call(current_user)
 
-    notify(:notice, t('controllers.menus.flash.create'))
-    redirect_to @menu
+    notify(:notice, t('controllers.menus.flash.create')) if menu
+    redirect_to menu
   end
 
   def edit

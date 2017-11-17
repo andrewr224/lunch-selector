@@ -1,5 +1,7 @@
 FactoryBot.define do
-  factory :menu
+  factory :menu do
+    user
+  end
 
   trait :with_meals do
     transient do
