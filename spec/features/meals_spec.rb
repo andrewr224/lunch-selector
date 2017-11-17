@@ -5,6 +5,9 @@ RSpec.feature 'Meals', type: :feature do
   let(:meal)  { create(:meal) }
   let(:name)  { meal.name }
   let(:price) { 12 }
+  let(:user)  { create(:user) }
+
+  before { sign_in user }
 
   def submit_the_form
     visit edit_menu_path menu

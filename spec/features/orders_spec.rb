@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.feature 'Orders', type: :feature do
   let(:menu) { create(:menu, :with_meals, meal_count: 1) }
+  let(:user)  { create(:user) }
+
+  before { sign_in user }
 
   def place_order
     visit menu_path menu
