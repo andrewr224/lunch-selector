@@ -7,6 +7,7 @@ end
 
 gem 'rails', '~> 5.1.4'
 
+gem 'cancancan'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'draper'
