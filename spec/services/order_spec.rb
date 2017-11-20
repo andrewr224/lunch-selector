@@ -16,9 +16,9 @@ RSpec.describe Order::Create do
       params: form_params }
   end
 
-  subject { described_class.call(params) }
-
-  it { is_expected.to be_an Order }
+  it 'creates an order' do
+    expect { described_class.call(params) }.to change(Order, :count).by(1)
+  end
 end
 
 RSpec.describe Order::Update do
