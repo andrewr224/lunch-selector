@@ -1,21 +1,24 @@
 require 'rails_helper'
 
-RSpec.describe 'Users', type: :feature do
+RSpec.feature User, type: :feature do
   let(:user) { build(:user) }
+
+  def sign_up
+    visit root_path
+
+    click_link 'Sign up', match: :first
+    within('form') do
+      fill_in 'Name',                  with: user.name
+      fill_in 'Email',                 with: user.email
+      fill_in 'Password',              with: user.password
+      fill_in 'Password confirmation', with: user.password
+      click_button 'Sign up'
+    end
+  end
 
   context 'when not yet signed up' do
     scenario 'can sign up' do
-      visit root_path
-      click_link 'Sign up', match: :first
-      within('form') do
-        fill_in 'Name',                  with: user.name
-        fill_in 'Email',                 with: user.email
-        fill_in 'Password',              with: user.password
-        fill_in 'Password confirmation', with: user.password
-        click_button 'Sign up'
-      end
-
-      expect(page).to have_content('You have signed up successfully.')
+      expect { sign_up }.to change(User, :count).by(1)
     end
 
     scenario 'cannot log in' do
@@ -28,6 +31,24 @@ RSpec.describe 'Users', type: :feature do
       end
 
       expect(page).to have_content('Invalid Email or password.')
+    end
+  end
+
+  context 'when there are no users yet' do
+    scenario 'can sign up and become an admin' do
+      sign_up
+
+      expect(User.first.admin).to be true
+    end
+  end
+
+  context 'when there are users already' do
+    before { create(:user) }
+
+    scenario 'can sign up but does not become an admin' do
+      sign_up
+
+      expect(User.last.admin).to be false
     end
   end
 
@@ -68,26 +89,6 @@ RSpec.describe 'Users', type: :feature do
       end
 
       expect(page).to have_content('You need to sign in or sign up')
-    end
-
-    context 'when user is labor' do
-      scenario 'can create an Order' do
-
-      end
-
-      scenario 'can modify my Order' do
-
-      end
-
-      scenario "cannot modify other user's Order" do
-
-      end
-    end
-
-    context 'when user is admin' do
-      scenario 'can create a menu' do
-
-      end
     end
   end
 end

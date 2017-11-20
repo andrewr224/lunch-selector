@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.feature 'Menus', type: :feature do
+RSpec.feature Menu, type: :feature do
   let(:menu) { create(:menu) }
-  let(:user) { create(:user, :admin) }
+  let(:user) { create(:user) }
 
   before { sign_in user }
 
