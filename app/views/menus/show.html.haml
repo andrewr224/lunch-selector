@@ -4,9 +4,9 @@
 %ul
   = render @facade.orders
 
-%p= "#{t('views.menus.total_cost')}: #{@facade.total_cost}" if current_user.admin? && @facade.orders.any?
+%p= "#{t('views.menus.total_cost')}: #{@facade.total_cost}" if @facade.menu.show_price?(current_user)
 
-- if current_user.orders.find_by(menu_id: @facade.menu.id)
+- if @facade.menu.placed_orer?(current_user)
   %p Your order has been placed
 - else
   = render 'orders/form', order: @facade.new_order
