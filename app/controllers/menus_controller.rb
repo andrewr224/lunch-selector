@@ -1,6 +1,8 @@
 class MenusController < ApplicationController
   def index
     @menus = Menu.all.decorate
+
+    redirect_to new_menu_path if @menus.empty?
   end
 
   def show
@@ -15,7 +17,7 @@ class MenusController < ApplicationController
     menu = Menu::Create.call(current_user)
 
     notify(:notice, t('controllers.menus.flash.create')) if menu
-    redirect_to menu
+    redirect_to edit_menu_path menu
   end
 
   def edit
