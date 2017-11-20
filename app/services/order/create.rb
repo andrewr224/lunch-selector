@@ -19,7 +19,6 @@ class Order
     def build_order
       order = menu.orders.create(params)
       user.orders << order
-      order
     end
   end
 end

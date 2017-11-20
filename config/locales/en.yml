@@ -31,8 +31,6 @@ en:
         error: Something went wrong :(
     orders:
       flash:
-        create: Order placed.
-        error: Something went wrong :(
         update: Order updated.
         destroy: Order destroyed.
   activerecord:

@@ -1,8 +1,10 @@
 class MenusController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @menus = Menu.all.decorate
 
-    redirect_to new_menu_path if @menus.empty?
+    redirect_to new_menu_path if @menus.empty? && current_user.admin?
   end
 
   def show

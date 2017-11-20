@@ -2,4 +2,4 @@
 %ul
   = render @menus
 
-= link_to t('views.menus.new'), new_menu_path
+= link_to t('views.menus.new'), new_menu_path if can? :manage, @menus

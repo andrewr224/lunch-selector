@@ -31,8 +31,6 @@ uk:
         error: Щось пішло не так :(
     orders:
       flash:
-        create: Замовлення додано.
-        error: Щось пішло не так :(
         update: Замовлення оновлено.
         destroy: Замовлення знищено.
   activerecord:
