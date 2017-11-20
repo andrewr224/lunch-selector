@@ -5,7 +5,7 @@ RSpec.feature 'Meals', type: :feature do
   let(:meal)  { create(:meal) }
   let(:name)  { meal.name }
   let(:price) { 12 }
-  let(:user)  { create(:user) }
+  let(:user)  { create(:user, :admin) }
 
   before { sign_in user }
 

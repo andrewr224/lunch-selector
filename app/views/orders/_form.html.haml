@@ -2,6 +2,6 @@
 = form_for [order.menu, order] do |f|
   %p
     = f.fields_for :order_items do |oif|
-      = oif.select :meal_id, options_from_collection_for_select(oif.object.meals_for_select, :id, :name), prompt: t('views.orders.meal')
+      = oif.select :meal_id, options_from_collection_for_select(oif.object.decorate.meals_for_select, :id, :name), prompt: t('views.orders.meal')
 
   %p= f.submit

@@ -69,5 +69,25 @@ RSpec.describe 'Users', type: :feature do
 
       expect(page).to have_content('You need to sign in or sign up')
     end
+
+    context 'when user is labor' do
+      scenario 'can create an Order' do
+
+      end
+
+      scenario 'can modify my Order' do
+
+      end
+
+      scenario "cannot modify other user's Order" do
+
+      end
+    end
+
+    context 'when user is admin' do
+      scenario 'can create a menu' do
+
+      end
+    end
   end
 end
