@@ -8,8 +8,16 @@ class Menu
       @order = @order.decorate
     end
 
+    def placed_order?(current_user)
+      current_user.orders.find_by(menu_id: menu.id)
+    end
+
     def orders
       @orders ||= menu.orders.decorate
+    end
+
+    def show_price?(current_user)
+      current_user.admin? && menu.orders.any?
     end
 
     def total_cost

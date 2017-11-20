@@ -7,9 +7,7 @@ class Order
     end
 
     def call
-      ActiveRecord::Base.transaction do
-        build_order
-      end
+      ActiveRecord::Base.transaction { build_order }
     end
 
     private
