@@ -1,5 +1,5 @@
 %p
-  = render 'orders/form', order: @order
+  = render 'orders/form', order: @order.decorate
 
 = link_to t('views.orders.delete'), menu_order_path(@order.menu, @order), method: :delete
 %br
