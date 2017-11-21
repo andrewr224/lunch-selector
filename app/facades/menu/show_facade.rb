@@ -33,7 +33,7 @@ class Menu
     end
 
     def ordered_meals
-      @ordered_meals ||= menu.orders.flat_map(&:meals)
+      @ordered_meals ||= Meal.joins(:orders).where(orders: { menu: menu })
     end
 
     def build_order_items
