@@ -3,8 +3,6 @@ class MenusController < ApplicationController
 
   def index
     @menus = Menu.all.decorate
-
-    redirect_to new_menu_path if @menus.empty? && current_user.admin?
   end
 
   def show
