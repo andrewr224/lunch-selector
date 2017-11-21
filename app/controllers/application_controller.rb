@@ -25,6 +25,6 @@ class ApplicationController < ActionController::Base
   end
 
   def added_attrs
-    %I[name email password password_confirmation remember_me]
+    %i[name email password password_confirmation remember_me]
   end
 end

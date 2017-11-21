@@ -9,7 +9,7 @@ class Menu
     end
 
     def placed_order?(current_user)
-      current_user.orders.find_by(menu_id: menu.id)
+      menu.orders.find_by(user: current_user)
     end
 
     def orders
@@ -17,7 +17,7 @@ class Menu
     end
 
     def show_price?(current_user)
-      current_user.admin? && menu.orders.any?
+      current_user.admin? && ordered_meals
     end
 
     def total_cost
@@ -29,11 +29,11 @@ class Menu
     attr_reader :order
 
     def current_price(meal)
-      menu.menu_items.find_by(meal_id: meal.id).price
+      menu.menu_items.find_by(meal: meal).price
     end
 
     def ordered_meals
-      menu.orders.flat_map(&:meals)
+      @ordered_meals ||= menu.orders.flat_map(&:meals)
     end
 
     def build_order_items

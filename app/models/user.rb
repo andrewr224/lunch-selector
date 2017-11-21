@@ -12,6 +12,6 @@ class User < ApplicationRecord
   private
 
   def set_admin
-    self.admin = true if User.count.zero?
+    self.admin = true unless User.exists?
   end
 end
