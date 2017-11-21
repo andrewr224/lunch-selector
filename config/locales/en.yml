@@ -7,7 +7,7 @@ en:
       new: Create today's menu
       orders: "Order List:"
       total_cost: Total cost
-      add_meals: Add meals!
+      manage_meals: Manage meals
       delete: Delete Menu!
       dashboard: Dashboard
       menu: "On today's list:"

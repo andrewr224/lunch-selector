@@ -8,11 +8,11 @@
 
 - if @facade.placed_order?(current_user)
   %p Your order has been placed
-- else
+- elsif @facade.menu.created_at.today?
   = render 'orders/form', order: @facade.new_order
 
 - if current_user.admin?
-  = link_to t('views.menus.add_meals'), edit_menu_path(@facade.menu)
+  = link_to t('views.menus.manage_meals'), edit_menu_path(@facade.menu)
   %br
   = link_to t('views.menus.delete'), menu_path(@facade.menu), method: :delete
   %br

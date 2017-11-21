@@ -29,7 +29,7 @@ class Menu
     attr_reader :order
 
     def current_price(meal)
-      menu.menu_items.find_by(meal: meal).price
+      menu.menu_items.find_by(meal: meal)&.price.to_i
     end
 
     def ordered_meals
