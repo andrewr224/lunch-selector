@@ -1,15 +1,9 @@
 require 'rails_helper'
 
 RSpec.feature 'Authentication', type: :feature do
-  let(:admin) { build(:user) }
-  let(:user)  { build(:user) }
+  let(:admin) { create(:user) }
+  let(:user)  { create(:user) }
   let(:menu)  { create(:menu, :with_meals, meal_count: 1) }
-
-  before do
-    admin.save
-    user.save
-    menu
-  end
 
   def place_order
     visit menu_path menu
@@ -28,19 +22,21 @@ RSpec.feature 'Authentication', type: :feature do
     describe 'create menu' do
       scenario 'creates a menu' do
         visit root_path
-        click_on "Create today's menu"
         expect { click_on 'Create Menu' }.to change(Menu, :count).by(1)
       end
     end
   end
 
   context 'when user is not an admin' do
-    before { sign_in user }
+    before do
+      admin
+      sign_in user
+    end
 
     describe 'create menu' do
-      scenario 'creates a menu' do
+      scenario 'cannot create a menu' do
         visit root_path
-        expect(page).to have_no_link("Create today's menu")
+        expect(page).to have_no_button('Create Menu')
       end
     end
   end
@@ -68,12 +64,12 @@ RSpec.feature 'Authentication', type: :feature do
     context 'when order does not belong to the user' do
       before { sign_in user }
 
-      scenario 'can edit an order' do
+      scenario 'cannot edit an order' do
         visit menu_path menu
         expect(page).to have_no_link('Edit Order')
       end
 
-      scenario 'can delete an order' do
+      scenario 'cannot delete an order' do
         visit menu_path menu
         expect(page).to have_no_link('Delete Order')
       end
