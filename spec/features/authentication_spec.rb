@@ -22,7 +22,6 @@ RSpec.feature 'Authentication', type: :feature do
     describe 'create menu' do
       scenario 'creates a menu' do
         visit root_path
-        save_page
         click_on "Create today's menu"
         expect { click_on 'Create Menu' }.to change(Menu, :count).by(1)
       end

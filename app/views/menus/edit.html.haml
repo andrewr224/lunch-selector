@@ -2,7 +2,7 @@
 
 = render partial: 'meals/courses', collection: @facade.courses, locals: { facade: @facade }
 
-- if @facade.menu.created_at.today?
+- if @facade.current_day_policy.allowed?
   = render 'meals/form', menu: @facade.menu, meal: @facade.new_meal
 
 = link_to t('views.done'), menu_path(@facade.menu)

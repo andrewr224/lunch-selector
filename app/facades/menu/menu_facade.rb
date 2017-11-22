@@ -21,6 +21,10 @@ class Menu
       )
     end
 
+    def current_day_policy
+      @policy ||= CurrentDayPolicy.new(menu)
+    end
+
     private
 
     attr_reader :id

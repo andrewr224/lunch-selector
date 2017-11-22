@@ -8,7 +8,7 @@
 
 - if @facade.placed_order?(current_user)
   %p Your order has been placed
-- elsif @facade.menu.created_at.today?
+- elsif @facade.current_day_policy.allowed?
   = render 'orders/form', order: @facade.new_order
 
 - if current_user.admin?

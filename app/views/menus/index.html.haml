@@ -2,7 +2,5 @@
 %ul
   = render @menus
 
-- if @menus.any? && current_user.admin?
-  = link_to t('views.menus.new'), new_menu_path unless @menus&.last&.created_at.today?
-- else
-  = link_to t('views.menus.new'), new_menu_path
+- if current_user.admin?
+  = link_to t('views.menus.new'), new_menu_path if @menus_policy.allowed?
