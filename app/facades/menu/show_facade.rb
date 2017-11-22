@@ -9,7 +9,7 @@ class Menu
     end
 
     def placed_order?(current_user)
-      menu.orders.find_by(user: current_user)
+      menu.orders.exists?(user: current_user)
     end
 
     def orders
@@ -17,7 +17,7 @@ class Menu
     end
 
     def show_price?(current_user)
-      current_user.admin? && ordered_meals
+      current_user.admin? && ordered_meals.exists?
     end
 
     def total_cost
