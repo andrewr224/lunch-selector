@@ -20,6 +20,7 @@ en:
       delete: Delete Order!
     back: << Back
     done: Done!
+    all_users: All Users
   controllers:
     menus:
       flash:

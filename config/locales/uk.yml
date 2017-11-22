@@ -20,6 +20,7 @@ uk:
       delete: Знищ замовлення!
     back: << Назад
     done: Готово!
+    all_users: Усі користувачі
   controllers:
     menus:
       flash:

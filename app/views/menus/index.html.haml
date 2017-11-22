@@ -4,3 +4,5 @@
 
 - if current_user.admin?
   = link_to t('views.menus.new'), new_menu_path if @menus_policy.allowed?
+  %br
+  = link_to t('views.all_users'), users_path

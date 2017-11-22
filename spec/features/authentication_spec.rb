@@ -26,6 +26,14 @@ RSpec.feature 'Authentication', type: :feature do
         expect { click_on 'Create Menu' }.to change(Menu, :count).by(1)
       end
     end
+
+    describe 'view all users' do
+      scenario 'can view user list' do
+        visit root_path
+        click_on 'All Users'
+        expect(page).to have_content('All Users')
+      end
+    end
   end
 
   context 'when user is not an admin' do
@@ -38,6 +46,13 @@ RSpec.feature 'Authentication', type: :feature do
       scenario 'cannot create a menu' do
         visit root_path
         expect(page).to have_no_link("Create today's menu")
+      end
+    end
+
+    describe 'view all users' do
+      scenario 'can view user list' do
+        visit root_path
+        expect(page).to have_no_link('All Users')
       end
     end
   end
