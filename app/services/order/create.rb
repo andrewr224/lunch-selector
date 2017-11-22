@@ -7,16 +7,11 @@ class Order
     end
 
     def call
-      ActiveRecord::Base.transaction { build_order }
+      menu.orders.create(params.merge(user: user))
     end
 
     private
 
     attr_reader :params, :menu, :user
-
-    def build_order
-      order = menu.orders.create(params)
-      user.orders << order
-    end
   end
 end
