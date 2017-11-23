@@ -8,7 +8,7 @@ class MenuPolicy
   end
 
   def allow_modification?
-    !menu.nil? && menu.created_at.today?
+    menu.present? && menu.created_at.today?
   end
 
   private
