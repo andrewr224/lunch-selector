@@ -2,13 +2,13 @@
 %h2= t('views.menus.orders')
 
 %ul
-  = render @facade.orders
+  = render partial: 'orders/order', collection: @facade.orders, as: :order, locals: { facade: @facade }
 
 %p= "#{t('views.menus.total_cost')}: #{@facade.total_cost}" if @facade.show_price?(current_user)
 
 - if @facade.placed_order?(current_user)
   %p Your order has been placed
-- elsif @facade.current_day_policy.allowed?
+- elsif allow_modification?(@facade.menu)
   = render 'orders/form', order: @facade.new_order
 
 - if current_user.admin?

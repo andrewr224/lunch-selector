@@ -7,6 +7,16 @@ class ApplicationController < ActionController::Base
     flash[key] = message
   end
 
+  def allow_placement?(menu)
+    policy(menu).allow_placement?
+  end
+
+  def allow_modification?(menu)
+    policy(menu).allow_modification?
+  end
+
+  helper_method :allow_placement?, :allow_modification?
+
   protected
 
   def configure_permitted_parameters
@@ -15,6 +25,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def policy(menu)
+    MenuPolicy.new(menu)
+  end
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale

@@ -3,7 +3,6 @@ class MenusController < ApplicationController
 
   def index
     @menus = Menu.all.decorate
-    @menus_policy = menus_creation_policy
   end
 
   def show
@@ -30,9 +29,5 @@ class MenusController < ApplicationController
 
     notify(:notice, t('controllers.menus.flash.destroy'))
     redirect_to menus_path
-  end
-
-  def menus_creation_policy
-    @menus_policy ||= MenusCreationPolicy.new
   end
 end

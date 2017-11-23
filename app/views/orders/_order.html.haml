@@ -1,7 +1,7 @@
 %li
   = "Order for #{order.stamp}:"
   = render partial: 'orders/meal', collection: order.meals
-  - if can? :manage, order.object
+  - if (can? :manage, order.object) && allow_modification?(order.menu)
     |
     = link_to t('views.orders.edit'), edit_menu_order_path(order.menu, order)
     |
