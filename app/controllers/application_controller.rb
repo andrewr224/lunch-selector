@@ -3,16 +3,10 @@ class ApplicationController < ActionController::Base
   before_action :set_locale, :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  include PolicyHandler
+
   def notify(key, message)
     flash[key] = message
-  end
-
-  def allow_placement?(menu)
-    policy(menu).allow_placement?
-  end
-
-  def allow_modification?(menu)
-    policy(menu).allow_modification?
   end
 
   helper_method :allow_placement?, :allow_modification?
