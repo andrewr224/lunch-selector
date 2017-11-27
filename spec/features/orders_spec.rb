@@ -1,7 +1,10 @@
 require 'rails_helper'
 
-RSpec.feature 'Orders', type: :feature do
+RSpec.feature Order, type: :feature do
   let(:menu) { create(:menu, :with_meals, meal_count: 1) }
+  let(:user) { create(:user) }
+
+  before { sign_in user }
 
   def place_order
     visit menu_path menu
@@ -17,6 +20,15 @@ RSpec.feature 'Orders', type: :feature do
   describe 'adding orders' do
     scenario 'creates order' do
       expect { place_order }.to change(Order, :count).by(1)
+    end
+
+    context 'when user already created an order' do
+      before { place_order }
+
+      scenario 'cannot add more orders' do
+        visit menu_path menu
+        expect(page).to have_no_content('Select your meals for today')
+      end
     end
   end
 

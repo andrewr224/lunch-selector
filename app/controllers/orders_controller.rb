@@ -1,21 +1,18 @@
 class OrdersController < ApplicationController
+  load_and_authorize_resource
+
   def create
-    order = Order::Create.call(
+    Order::Create.call(
       params: order_params,
+      user:   current_user,
       menu:   menu
     )
-
-    if order
-      notify(:notice, t('controllers.orders.flash.create'))
-    else
-      notify(:error, t('controllers.orders.flash.error'))
-    end
 
     redirect_to menu
   end
 
   def edit
-    @order ||= Order.find_by(id: params[:id]).decorate
+    @order ||= Order.find_by(id: params[:id])
   end
 
   def update

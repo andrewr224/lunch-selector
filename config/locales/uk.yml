@@ -7,7 +7,7 @@ uk:
       new: Створіть сьогоднішнє меню
       orders: "Список замовлень:"
       total_cost: Загальна вартість
-      add_meals: Додай страву!
+      manage_meals: Управління стравами
       delete: Знищ список!
       dashboard: Контрольна панель
       menu: "Сьогодні в меню:"
@@ -20,6 +20,7 @@ uk:
       delete: Знищ замовлення!
     back: << Назад
     done: Готово!
+    all_users: Усі користувачі
   controllers:
     menus:
       flash:
@@ -31,8 +32,6 @@ uk:
         error: Щось пішло не так :(
     orders:
       flash:
-        create: Замовлення додано.
-        error: Щось пішло не так :(
         update: Замовлення оновлено.
         destroy: Замовлення знищено.
   activerecord:

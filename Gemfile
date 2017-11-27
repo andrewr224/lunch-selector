@@ -7,9 +7,11 @@ end
 
 gem 'rails', '~> 5.1.4'
 
+gem 'cancancan'
 gem 'coffee-rails', '~> 4.2'
 gem 'devise'
 gem 'draper'
+gem 'haml-rails'
 gem 'hamlit'
 gem 'jbuilder', '~> 2.5'
 gem 'puma', '~> 3.7'

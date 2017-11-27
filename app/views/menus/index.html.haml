@@ -2,4 +2,7 @@
 %ul
   = render @menus
 
-= link_to t('views.menus.new'), new_menu_path
+- if current_user.admin?
+  = link_to t('views.menus.new'), new_menu_path if allow_placement?(@menus.last)
+  %br
+  = link_to t('views.all_users'), users_path

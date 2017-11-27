@@ -1,4 +1,6 @@
 class MenusController < ApplicationController
+  load_and_authorize_resource
+
   def index
     @menus = Menu.all.decorate
   end
@@ -12,10 +14,10 @@ class MenusController < ApplicationController
   end
 
   def create
-    @menu = Menu.create
+    menu = Menu::Create.call(current_user)
 
-    notify(:notice, t('controllers.menus.flash.create'))
-    redirect_to @menu
+    notify(:notice, t('controllers.menus.flash.create')) if menu
+    redirect_to edit_menu_path menu
   end
 
   def edit

@@ -2,6 +2,7 @@
 
 = render partial: 'meals/courses', collection: @facade.courses, locals: { facade: @facade }
 
-= render 'meals/form', menu: @facade.menu, meal: @facade.new_meal
+- if allow_modification?(@facade.menu)
+  = render 'meals/form', menu: @facade.menu, meal: @facade.new_meal
 
 = link_to t('views.done'), menu_path(@facade.menu)

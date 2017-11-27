@@ -7,7 +7,7 @@ en:
       new: Create today's menu
       orders: "Order List:"
       total_cost: Total cost
-      add_meals: Add meals!
+      manage_meals: Manage meals
       delete: Delete Menu!
       dashboard: Dashboard
       menu: "On today's list:"
@@ -20,6 +20,7 @@ en:
       delete: Delete Order!
     back: << Back
     done: Done!
+    all_users: All Users
   controllers:
     menus:
       flash:
@@ -31,8 +32,6 @@ en:
         error: Something went wrong :(
     orders:
       flash:
-        create: Order placed.
-        error: Something went wrong :(
         update: Order updated.
         destroy: Order destroyed.
   activerecord:

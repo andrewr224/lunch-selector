@@ -8,8 +8,16 @@ class Menu
       @order = @order.decorate
     end
 
+    def placed_order?(current_user)
+      menu.orders.exists?(user: current_user)
+    end
+
     def orders
       @orders ||= menu.orders.decorate
+    end
+
+    def show_price?(current_user)
+      current_user.admin? && ordered_meals.exists?
     end
 
     def total_cost
@@ -21,11 +29,11 @@ class Menu
     attr_reader :order
 
     def current_price(meal)
-      menu.menu_items.find_by(meal_id: meal.id).price
+      menu.menu_items.find_by(meal: meal)&.price.to_i
     end
 
     def ordered_meals
-      menu.orders.flat_map(&:meals)
+      @ordered_meals ||= Meal.joins(:orders).where(orders: { menu: menu })
     end
 
     def build_order_items

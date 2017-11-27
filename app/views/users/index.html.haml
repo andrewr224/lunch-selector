@@ -1,0 +1,7 @@
+%h3= t('views.all_users')
+
+%ol
+  = render @users
+
+%br
+= link_to t('views.menus.dashboard'), menus_path
