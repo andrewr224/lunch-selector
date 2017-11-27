@@ -20,10 +20,6 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def policy(menu)
-    MenuPolicy.new(menu)
-  end
-
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
   end
