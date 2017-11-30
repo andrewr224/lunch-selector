@@ -1,6 +1,6 @@
 %p
   = render 'orders/form', order: @order.decorate
 
-= link_to t('views.orders.delete'), menu_order_path(@order.menu, @order), method: :delete
+= link_to t('views.orders.delete'), menu_order_path(@order.menu, @order), method: :delete, class: 'button alert'
 %br
-= link_to t('views.back'), menu_path(@order.menu)
+= link_to t('views.back'), menu_path(@order.menu), class: 'button success'

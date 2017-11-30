@@ -1,15 +1,19 @@
 !!!
 %html
   %head
+    %meta{charset: "utf-8"}
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1.0"}
     %title LunchSelector
     = csrf_meta_tags
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'vendor/modernizr'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
 
-  %body
-    %h1= t('views.layouts.title')
-    = render 'application/navbar'
-    = render 'application/flash'
-    = render 'application/auth'
+  %body.row
+    %h1.text-center.main-title= t('views.layouts.title')
+    .text-right
+      = render 'application/navbar'
+      = render 'application/flash'
+      = render 'application/auth'
     = yield
