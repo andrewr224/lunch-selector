@@ -1,8 +1,8 @@
-%h1= t('views.menus.menu')
+%h2= t('views.menus.menu')
 
 = render partial: 'meals/courses', collection: @facade.courses, locals: { facade: @facade }
 
 - if allow_modification?(@facade.menu)
   = render 'meals/form', menu: @facade.menu, meal: @facade.new_meal
 
-= link_to t('views.done'), menu_path(@facade.menu)
+= link_to t('views.done'), menu_path(@facade.menu), class: 'button success'
