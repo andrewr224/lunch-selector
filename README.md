@@ -1,24 +1,7 @@
-# README
+# Exceedingly gorgeous Lunch Selector
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app allows users to select meals from predefined menu. They can only make and edit orders from current menu (which makes sense if you think about it).
 
-Things you may want to cover:
+Lunch admin can add menus and specify meals, as well as view all the users in the system.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+You can try it [here](https://ancient-chamber-81980.herokuapp.com/), (please use dummy emails for registration).
